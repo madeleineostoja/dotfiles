@@ -32,27 +32,28 @@ dotfiles/
 # 1. Xcode CLT
 xcode-select --install
 
-# 2. Homebrew
+# 2. SSH key
+ssh-keygen -t ed25519 -C "your-personal-email@example.com" -f ~/.ssh/id_ed25519
+# Add ~/.ssh/id_ed25519.pub to GitHub: Settings → SSH and GPG keys
+
+# 3. Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# 3. Nix
+# 4. Nix
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
-# 4. Dotfiles
+# 5. Dotfiles
 git clone https://github.com/madeleineostoja/dotfiles.git
 chflags hidden dotfiles
 
-# 5. Bootstrap`
+# 6. Bootstrap`
 cd ~/dotfiles
 nix run home-manager/master -- switch --flake .
 brew bundle install --file=./Brewfile
 ./scripts/defaults.sh
 launchctl load ~/dotfiles/launchd/com.user.nix-gc.plist
-
-# 6. Reload shell
-exec zsh
 ```
 
 ## Manual GUI setup
