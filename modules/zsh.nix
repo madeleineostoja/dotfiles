@@ -67,7 +67,9 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    settings = { };
+    settings = {
+      git_status.disabled = true;
+    };
   };
 
   programs.fzf = {
@@ -75,20 +77,7 @@
     enableZshIntegration = true;
   };
 
-  programs.atuin = {
-    enable = true;
-    enableZshIntegration = true;
-    flags = [ "--disable-up-arrow" ];
-    settings = {
-      auto_sync = false;
-      update_check = true;
-      style = "compact";
-      inline_height = 20;
-      show_preview = true;
-    };
-  };
-
-  programs.mise = {
+programs.mise = {
     enable = true;
     enableZshIntegration = true;
     globalConfig = {

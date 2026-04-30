@@ -32,7 +32,6 @@ in
     ripgrep
     fd
     fzf
-    atuin
     dust
 
     # Git
