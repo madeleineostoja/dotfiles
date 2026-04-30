@@ -36,7 +36,3 @@
 
 [rerere]
   enabled = true
-
-# Use SSH for GitHub
-[url "git@github.com:"]
-  insteadOf = https://github.com/
