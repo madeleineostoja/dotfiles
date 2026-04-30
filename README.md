@@ -59,16 +59,6 @@ exec zsh
 
 After bootstrap, complete these once.
 
-### macOS auto-update
-
-System Settings → General → Software Update → (i) next to Automatic Updates:
-
-- Check for updates: on
-- Download new updates when available: on
-- Install macOS updates: on
-- Install application updates from the App Store: on
-- Install Security Responses and system files: on
-
 ### Hyperkey
 
 - Grant accessibility permissions
