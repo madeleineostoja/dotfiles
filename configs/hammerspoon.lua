@@ -5,6 +5,8 @@ local apps = {
   c = "Visual Studio Code",
   b = "Helium",
   w = "Safari",
+  m = "Mail",
+  n = "Notion"
 }
 
 for key, app in pairs(apps) do
