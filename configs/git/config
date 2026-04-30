@@ -1,0 +1,42 @@
+[user]
+  name = Madi Ostoja
+  email = madi@madeleineostoja.com
+
+[init]
+  defaultBranch = main
+
+[core]
+  pager = delta
+  excludesfile = ~/.config/git/ignore
+  editor = code --wait
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[pull]
+  rebase = true
+
+[push]
+  default = current
+  autoSetupRemote = true
+
+[fetch]
+  prune = true
+
+[rerere]
+  enabled = true
+
+# Use SSH for GitHub
+[url "git@github.com:"]
+  insteadOf = https://github.com/

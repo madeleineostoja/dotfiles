@@ -1,0 +1,4 @@
+cmd + ctrl + alt + shift - t : open -a "Ghostty"
+cmd + ctrl + alt + shift - c : open -a "Visual Studio Code"
+cmd + ctrl + alt + shift - b : open -a "Helium"
+cmd + ctrl + alt + shift - w : open -a "Safari"
