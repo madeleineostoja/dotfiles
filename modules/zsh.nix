@@ -53,7 +53,7 @@
       lg = "lazygit";
 
       # Misc
-      nixupdate = "home-manager switch --flake ~/dotfiles";
+      nixsync = "home-manager switch --flake ~/dotfiles";
       sysupdate = "~/dotfiles/scripts/update.sh";
     };
 
