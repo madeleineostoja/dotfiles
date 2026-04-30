@@ -40,8 +40,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # 3. Nix
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
-# 4. Clone
+# 4. Dotfiles
 git clone https://github.com/madeleineostoja/dotfiles.git
+chflags hidden dotfiles
 
 # 5. Bootstrap`
 cd ~/dotfiles
