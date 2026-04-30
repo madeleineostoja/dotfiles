@@ -100,7 +100,7 @@ MacOS security patches, browsers, VSCode, Claude desktop, casks with built-in up
 sysupdate
 ```
 
-Runs `scripts/update.sh`: brew update/upgrade, Brewfile reconcile with `--zap`, `nix flake update`, `home-manager switch`, mise plugin update.
+Runs `scripts/update.sh`: brew update/upgrade, Brewfile reconcile with `--zap`, `nix flake update`, `nixsync`, mise plugin update.
 
 After:
 
@@ -111,7 +111,7 @@ git commit -am "chore: quarterly update"
 git push
 ```
 
-If broken: `home-manager switch --rollback`.
+If broken: `nixsync --rollback`.
 
 ### Occasional
 
@@ -139,10 +139,10 @@ git fetch upstream && git merge upstream/main && git push
 ## Common operations
 
 **Add a CLI tool (no shell integration):**
-Edit `home.nix` → `home.packages`. Run `home-manager switch`.
+Edit `home.nix` → `home.packages`. Run `nixsync`.
 
 **Add a CLI tool (with shell integration):**
-Edit `modules/zsh.nix` → add `programs.<tool>` block with `enableZshIntegration = true`. Run `home-manager switch`.
+Edit `modules/zsh.nix` → add `programs.<tool>` block with `enableZshIntegration = true`. Run `nixsync`.
 
 **Add a GUI app:**
 Edit `Brewfile` → `cask "name"`. Run `brew bundle install`.
@@ -154,17 +154,17 @@ Create file at `configs/<tool>` in repo. Add to `home.nix`:
 "{config path}".source = mkLink "configs/<tool>";
 ```
 
-Run `home-manager switch`.
+Run `nixsync`.
 
 **Edit existing config:**
 
 - Non-shell (gitconfig, ghostty, ssh, claude): edit in repo, immediately live.
-- Shell (zsh, starship, mise, atuin, fzf): edit `modules/zsh.nix`, run `home-manager switch`.
+- Shell (zsh, starship, mise, atuin, fzf): edit `modules/zsh.nix`, run `nixsync`.
 
 **Roll back:**
 
 ```bash
-home-manager switch --rollback
+nixsync --rollback
 ```
 
 **Try a tool ephemerally:**
@@ -229,7 +229,7 @@ brew bundle install --cleanup --force --zap --file=~/dotfiles/Brewfile
 # 3. Optional: open Pearcleaner → "Remaining Files" for orphans
 ```
 
-### Inspecting what changed in a recent home-manager switch
+### Inspecting what changed in a recent home-manager sync
 
 ```bash
 home-manager generations
