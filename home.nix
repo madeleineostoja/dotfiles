@@ -1,9 +1,15 @@
-{ config, pkgs, username, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
   mkLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
-in {
+in
+{
   home.username = username;
   home.homeDirectory = "/Users/${username}";
   home.stateVersion = "25.11";
@@ -17,7 +23,7 @@ in {
 
   # Packages
   home.packages = with pkgs; [
-    # Shell 
+    # Shell
     starship
 
     # CLI tools
@@ -55,11 +61,12 @@ in {
 
   # Config files
   home.file = {
+    ".ssh/config".source = mkLink "ssh/config";
     ".config/git/config".source = mkLink "configs/git/config";
     ".config/git/ignore".source = mkLink "configs/git/ignore";
     ".config/ghostty/config".source = mkLink "configs/ghostty";
     ".config/skhd/skhdrc".source = mkLink "config/skhdrc";
-    
+
     # Claude
     ".claude/CLAUDE.md".source = mkLink "configs/claude/CLAUDE.md";
     ".claude/settings.json".source = mkLink "configs/claude/settings.json";
