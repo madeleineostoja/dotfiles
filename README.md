@@ -67,7 +67,7 @@ After bootstrap, complete these once.
 
 ### Keyboard shortcuts
 
-Run `skhd --start-service` to initialise the keybinds in `configs/skhdrc`
+Open Hammerspoon, grant accessibility permissions, and enable "Launch at Login" in the menu bar icon. Binds in `configs/hammerspoon.lua` will load automatically.
 
 System Settings → Keyboard → Keyboard Shortcuts:
 

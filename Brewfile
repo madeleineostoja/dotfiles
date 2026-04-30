@@ -16,6 +16,7 @@ cask "orbstack"
 cask "godot"
 
 # Utilities
+cask "hammerspoon"
 cask "hyperkey"
 cask "rectangle"
 cask "monitorcontrol" 
