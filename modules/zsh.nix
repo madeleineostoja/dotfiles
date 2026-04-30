@@ -52,8 +52,9 @@
       gr = "git rebase";
       lg = "lazygit";
 
-      # Misc
+      # Shortcuts
       nixsync = "home-manager switch --flake ~/dotfiles";
+      brewsync = "brew bundle install --cleanup --force --zap --file=~/dotfiles/Brewfile";
       sysupdate = "~/dotfiles/scripts/update.sh";
     };
 
@@ -77,7 +78,7 @@
     enableZshIntegration = true;
   };
 
-programs.mise = {
+  programs.mise = {
     enable = true;
     enableZshIntegration = true;
     globalConfig = {
