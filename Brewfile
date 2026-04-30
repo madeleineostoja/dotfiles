@@ -3,7 +3,7 @@ cask "font-monaspace"
 cask "font-monaspice-nerd-font"
 
 # Apps
-cask "helium"
+cask "helium-browser"
 cask "notion"
 cask "orbstack"
 cask "claude"
