@@ -1,4 +1,4 @@
-# dotfiles
+# Dotfiles
 
 My personal workstation configuration, running on a Macbook Pro
 
@@ -32,29 +32,25 @@ dotfiles/
 # 1. Xcode CLT
 xcode-select --install
 
-# 2. SSH key
-ssh-keygen -t ed25519 -C "personal-email@example.com" -f ~/.ssh/id_ed25519
-# Add ~/.ssh/id_ed25519.pub to GitHub
-
-# 3. Homebrew
+# 2. Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# 4. Nix
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+# 3. Nix
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
-# 5. Clone
-git clone git@github.com:USERNAME/dotfiles.git
+# 4. Clone
+git clone https://github.com/madeleineostoja/dotfiles.git
 
-# 6. Bootstrap
+# 5. Bootstrap`
 cd ~/dotfiles
 nix run home-manager/master -- switch --flake .
 brew bundle install --file=./Brewfile
 ./scripts/defaults.sh
 launchctl load ~/dotfiles/launchd/com.user.nix-gc.plist
 
-# 7. Reload shell
+# 6. Reload shell
 exec zsh
 ```
 
@@ -85,7 +81,7 @@ System Settings → Keyboard → Keyboard Shortcuts:
 
 | Action                | Binding   | Section         |
 | --------------------- | --------- | --------------- |
-| Switch to Desktop 1–3 | Hyper+1–4 | Mission Control |
+| Switch to Desktop 1–3 | Hyper+1–3 | Mission Control |
 
 Create the three Spaces first via Mission Control (3-finger swipe up, click +).
 
