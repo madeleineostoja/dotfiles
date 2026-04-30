@@ -69,10 +69,4 @@ in {
       recursive = true;
     };
   };
-
-  # Nix settings
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
-  };
 }
