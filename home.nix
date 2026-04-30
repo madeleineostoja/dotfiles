@@ -65,7 +65,7 @@ in
     ".config/git/config".source = mkLink "configs/git/config";
     ".config/git/ignore".source = mkLink "configs/git/ignore";
     ".config/ghostty/config".source = mkLink "configs/ghostty";
-    ".config/skhd/skhdrc".source = mkLink "config/skhdrc";
+    ".config/skhd/skhdrc".source = mkLink "configs/skhdrc";
 
     # Claude
     ".claude/CLAUDE.md".source = mkLink "configs/claude/CLAUDE.md";
