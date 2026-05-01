@@ -5,7 +5,6 @@ cask "font-monaspice-nerd-font"
 # Apps
 cask "helium-browser"
 cask "notion"
-cask "orbstack"
 cask "claude"
 cask "iina"
 
