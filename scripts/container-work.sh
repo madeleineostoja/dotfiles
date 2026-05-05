@@ -6,7 +6,8 @@ set -euo pipefail
 DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 
 cd "$DOTFILES"
-git fetch origin work
+git remote set-branches --add origin work
+git fetch origin
 git checkout work
 git pull --ff-only origin work
 
