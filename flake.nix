@@ -1,5 +1,5 @@
 {
-  description = "Cross-platform home-manager configuration";
+  description = "MacBook configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -9,30 +9,21 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs =
+    { nixpkgs, home-manager, ... }:
     let
-      mkHome = { system, homeDirectory }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          modules = [ ./home.nix ];
-          extraSpecialArgs = { inherit homeDirectory; };
-        };
-    in {
-      homeConfigurations = {
-        # Personal Mac
-        mads = mkHome {
-          system = "aarch64-darwin";
-          homeDirectory = "/Users/mads";
-        };
-
-        # Linux devcontainer (vscode user)
-        vscode = mkHome {
-          system = "aarch64-linux";
-          homeDirectory = "/home/vscode";
-        };
+      system = "aarch64-darwin";
+      homeDirectory = "/Users/mads";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      homeConfigurations.mads = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home.nix ];
+        extraSpecialArgs = { inherit homeDirectory; };
       };
     };
 }
