@@ -62,6 +62,8 @@
       setopt AUTO_CD INTERACTIVE_COMMENTS EXTENDED_GLOB NO_BEEP
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+      if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
     '';
   };
 
