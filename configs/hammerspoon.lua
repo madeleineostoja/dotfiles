@@ -1,21 +1,16 @@
 local hyper = { "cmd", "ctrl", "alt", "shift" }
 
 local apps = {
-  t = "Ghostty",
-  c = "Visual Studio Code",
-  b = "Helium",
-  w = "Safari",
-  m = "Mail",
-  n = "Notion"
+  t = "com.mitchellh.ghostty",
+  c = "com.microsoft.VSCode",
+  b = "net.imput.helium",
+  w = "com.apple.Safari",
+  m = "com.apple.mail",
+  n = "notion.id"
 }
 
-for key, app in pairs(apps) do
+for key, bundleID in pairs(apps) do
   hs.hotkey.bind(hyper, key, function()
-    local running = hs.application.find(app)
-    if running then
-      hs.application.launchOrFocusByBundleID(running:bundleID())
-    else
-      hs.application.launchOrFocus(app)
-    end
+    hs.application.launchOrFocusByBundleID(bundleID)
   end)
 end
