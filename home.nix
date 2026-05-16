@@ -9,7 +9,7 @@
 let
   dotfiles = "${homeDirectory}/dotfiles";
   mkLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
-  pnpmHome = "${homeDirectory}/Library/pnpm"
+  pnpmHome = "${homeDirectory}/Library/pnpm";
 in
 {
   home.username = baseNameOf homeDirectory;
@@ -77,5 +77,5 @@ in
       source = mkLink "configs/claude/skills";
       recursive = true;
     };
-  }
+  };
 }
