@@ -1,16 +1,8 @@
 {
-  "model": "opus[1m]",
-  "effort": "medium",
   "respectGitignore": false,
-  "spinnerTipsEnabled": false,
-  "theme": "dark",
   "attribution": {
     "commit": "",
     "pr": ""
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
   },
   "permissions": {
     "allow": [
@@ -25,5 +17,13 @@
       "Read(./.env)",
       "Read(./.env.*)"
     ]
-  }
+  },
+  "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "spinnerTipsEnabled": false,
+  "theme": "dark",
+  "effort": "medium"
 }
