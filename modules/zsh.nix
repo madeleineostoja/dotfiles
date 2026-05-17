@@ -41,6 +41,7 @@
       gab = "git checkout -b";
       gcb = "git checkout";
       grmb = "git branch -D";
+      grmrb = "git push origin --delete";
       grmtag = "git tag -d";
       gdis = "git checkout --";
       glog = "git log --graph";
