@@ -28,6 +28,7 @@
       rmf = "rm -rf";
       pn = "pnpm";
       sb = "supabase";
+      cc = "claude";
 
       # Git
       g = "git";
@@ -91,7 +92,6 @@
     globalConfig = {
       tools = {
         node = "lts";
-        ruby = "3.3";
         python = "3.12";
       };
     };
