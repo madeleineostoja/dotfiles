@@ -24,6 +24,8 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "spinnerTipsEnabled": false,
+  "effortLevel": "medium",
   "theme": "dark",
-  "effort": "medium"
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true
 }
