@@ -7,12 +7,14 @@ cask "helium-browser"
 cask "notion"
 cask "claude"
 cask "iina"
+cask "steam"
 
 # Development
 cask "ghostty"
 cask "visual-studio-code"
 cask "orbstack"
 cask "godot"
+cask "tiled"
 
 # Utilities
 cask "hammerspoon"
