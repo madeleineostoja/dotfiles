@@ -3,6 +3,7 @@
   pkgs,
   lib,
   homeDirectory,
+  agents,
   ...
 }:
 
@@ -69,12 +70,22 @@ in
     ".config/ghostty/config".source = mkLink "configs/ghostty";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
 
+    # Pi
+    ".pi/agent/settings.json".source = mkLink "configs/pi/settings.json";
+    ".pi/agent/models.json".source = mkLink "configs/pi/models.json";
+    ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
+    ".pi/agent/AGENTS.md".source = "${agents}/AGENTS.md";
+    ".pi/agent/skills" = {
+      source = "${agents}/skills";
+      recursive = true;
+    };
+
     # Claude
-    ".claude/CLAUDE.md".source = mkLink "configs/claude/CLAUDE.md";
     ".claude/settings.json".source = mkLink "configs/claude/settings.json";
     ".claude/statusline-command.sh".source = mkLink "configs/claude/statusline-command.sh";
+    ".claude/CLAUDE.md".source = "${agents}/AGENTS.md";
     ".claude/skills" = {
-      source = mkLink "configs/claude/skills";
+      source = "${agents}/skills";
       recursive = true;
     };
   };

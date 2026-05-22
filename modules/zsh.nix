@@ -58,7 +58,7 @@
       lg = "lazygit";
 
       # Shortcuts
-      nixsync = "home-manager switch --flake ~/dotfiles";
+      nixsync = "cd ~/dotfiles && nix flake update agents && home-manager switch --flake .";
       brewsync = "brew bundle install --cleanup --force --zap --file=~/dotfiles/Brewfile";
       sysupdate = "~/dotfiles/scripts/update.sh";
     };

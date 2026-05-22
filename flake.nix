@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agents = {
+      url = "github:madeleineostoja/agents";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,7 +27,7 @@
       homeConfigurations.mads = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
-        extraSpecialArgs = { inherit homeDirectory; };
+        extraSpecialArgs = { inherit homeDirectory agents; };
       };
     };
 }
