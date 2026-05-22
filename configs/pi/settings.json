@@ -1,0 +1,19 @@
+{
+  "lastChangelogVersion": "0.75.4",
+  "defaultProvider": "anthropic",
+  "defaultModel": "anthropic/claude-opus-4-7",
+  "defaultThinkingLevel": "medium",
+  "enabledModels": ["anthropic/claude-opus-4-7"],
+  "hideThinkingBlock": true,
+  "steeringMode": "all",
+  "followUpMode": "all",
+  "collapseChangelog": true,
+  "quietStartup": true,
+  "enableInstallTelemetry": false,
+  "theme": "catppuccin-mocha",
+  "packages": [
+    "npm:pi-tool-display",
+    "npm:pi-smart-fetch",
+    "npm:@ifi/oh-pi-themes"
+  ]
+}
