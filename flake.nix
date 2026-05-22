@@ -14,7 +14,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, agents, ... }:
     let
       system = "aarch64-darwin";
       homeDirectory = "/Users/mads";
