@@ -60,7 +60,10 @@ in
   };
 
   # Fix PNPM global installs
-  home.sessionPath = [ pnpmHome ];
+  home.sessionPath = [
+    pnpmHome
+    "${pnpmHome}/bin"
+  ];
 
   # Config files
   home.file = {
