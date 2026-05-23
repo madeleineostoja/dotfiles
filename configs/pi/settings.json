@@ -1,9 +1,9 @@
 {
   "lastChangelogVersion": "0.75.4",
   "defaultProvider": "anthropic",
-  "defaultModel": "anthropic/claude-opus-4-7",
+  "defaultModel": "claude-opus-4-7",
   "defaultThinkingLevel": "medium",
-  "enabledModels": ["anthropic/claude-opus-4-7"],
+  "enabledModels": ["anthropic/claude-opus-4-7", "anthropic/claude-sonnet-4-6"],
   "hideThinkingBlock": true,
   "steeringMode": "all",
   "followUpMode": "all",
@@ -11,9 +11,5 @@
   "quietStartup": true,
   "enableInstallTelemetry": false,
   "theme": "catppuccin-mocha",
-  "packages": [
-    "npm:pi-tool-display",
-    "npm:pi-smart-fetch",
-    "npm:@ifi/oh-pi-themes"
-  ]
+  "packages": ["npm:pi-tool-display", "npm:pi-smart-fetch"]
 }
