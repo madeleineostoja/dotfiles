@@ -47,6 +47,7 @@ in
     mise
     pnpm
     nixfmt
+    ctx7
 
     # Other
     claude-code
