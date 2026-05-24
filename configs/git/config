@@ -8,7 +8,7 @@
 [core]
   pager = delta
   excludesfile = ~/.config/git/ignore
-  editor = code --wait
+  editor = zed --wait
 
 [interactive]
   diffFilter = delta --color-only
@@ -37,8 +37,8 @@
 [rerere]
   enabled = true
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/Users/mads/.nix-profile/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/Users/mads/.nix-profile/bin/gh auth git-credential
