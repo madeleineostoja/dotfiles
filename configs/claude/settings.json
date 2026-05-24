@@ -1,5 +1,4 @@
 {
-  "respectGitignore": false,
   "attribution": {
     "commit": "",
     "pr": ""
@@ -18,7 +17,6 @@
       "Read(./.env.*)"
     ]
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
