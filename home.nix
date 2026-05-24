@@ -55,8 +55,8 @@ in
 
   # Environment
   home.sessionVariables = {
-    EDITOR = "code --wait";
-    VISUAL = "code --wait";
+    EDITOR = "zed --wait";
+    VISUAL = "zed --wait";
     PNPM_HOME = pnpmHome;
   };
 
@@ -79,19 +79,17 @@ in
     ".pi/agent/models.json".source = mkLink "configs/pi/models.json";
     ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
     ".pi/agent/themes/theme.json".source = mkLink "configs/pi/theme.json";
-    ".pi/agent/AGENTS.md".source = "${agents}/AGENTS.md";
-    ".pi/agent/skills" = {
-      source = "${agents}/skills";
-      recursive = true;
-    };
+    ".pi/agent/extensions".source = mkLink "configs/pi/extensions";
+    ".pi/agent" = { source = "${agents}"; recursive = true; };
+
+    # Zed
+    ".config/zed/settings.json".source = mkLink "configs/zed/settings.json";
+    ".config/zed/keymap.json".source = mkLink "configs/zed/keymap.json";
 
     # Claude
     ".claude/settings.json".source = mkLink "configs/claude/settings.json";
     ".claude/statusline-command.sh".source = mkLink "configs/claude/statusline-command.sh";
     ".claude/CLAUDE.md".source = "${agents}/AGENTS.md";
-    ".claude/skills" = {
-      source = "${agents}/skills";
-      recursive = true;
-    };
+    ".claude/skills" = { source = "${agents}/skills"; };
   };
 }
