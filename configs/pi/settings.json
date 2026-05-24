@@ -1,15 +1,22 @@
 {
   "lastChangelogVersion": "0.75.4",
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-7",
+  "defaultProvider": "openrouter",
+  "defaultModel": "moonshotai/kimi-k2.6",
   "defaultThinkingLevel": "medium",
-  "enabledModels": ["anthropic/claude-opus-4-7", "anthropic/claude-sonnet-4-6"],
+  "enabledModels": [
+    "openai-codex/gpt-5.5",
+    "openrouter/moonshotai/kimi-k2.6"
+  ],
   "hideThinkingBlock": true,
   "steeringMode": "all",
   "followUpMode": "all",
   "collapseChangelog": true,
   "quietStartup": true,
   "enableInstallTelemetry": false,
-  "theme": "catppuccin-mocha",
-  "packages": ["npm:pi-tool-display", "npm:pi-smart-fetch"]
+  "theme": "catppuccin-macchiato",
+  "packages": [
+    "npm:pi-tool-display",
+    "npm:pi-smart-fetch",
+    "git:github.com/madeleineostoja/pi-extensions"
+  ]
 }
