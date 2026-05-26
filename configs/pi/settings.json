@@ -5,7 +5,8 @@
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "openai-codex/gpt-5.5",
-    "openrouter/moonshotai/kimi-k2.6"
+    "openrouter/moonshotai/kimi-k2.6",
+    "openrouter/anthropic/claude-opus-4.7"
   ],
   "hideThinkingBlock": true,
   "steeringMode": "all",
