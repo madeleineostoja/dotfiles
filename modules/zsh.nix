@@ -29,6 +29,7 @@
       pn = "pnpm";
       sb = "supabase";
       cc = "claude";
+      z = "zed";
 
       # Git
       g = "git";
