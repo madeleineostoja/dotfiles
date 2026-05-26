@@ -44,7 +44,7 @@
     "userMessageBg": "#2b2e43",
     "userMessageText": "text",
     "customMessageBg": "#363a4f",
-    "customMessageText": "text",
+    "customMessageText": "subtext0",
     "customMessageLabel": "mauve",
     "toolPendingBg": "#2b2e43",
     "toolSuccessBg": "#2b2e43",
