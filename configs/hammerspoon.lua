@@ -5,7 +5,8 @@ local apps = {
   x = "dev.zed.Zed",
   b = "net.imput.helium",
   w = "com.apple.Safari",
-  m = "com.apple.mail",
+  e = "com.apple.mail",
+  m = "com.apple.music",
   n = "notion.id",
   a = "com.anthropic.claudefordesktop"
 }
