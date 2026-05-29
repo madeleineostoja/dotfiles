@@ -4,6 +4,7 @@
   lib,
   homeDirectory,
   agents,
+  catppuccin-godot,
   ...
 }:
 
@@ -28,7 +29,7 @@ in
 
   # Modules
   imports = [
-    ./modules/zsh.nix
+    ./modules/shell.nix
   ];
 
   # Packages
@@ -48,6 +49,7 @@ in
     git
     delta
     gh
+    lazygit
     worktrunk
 
     # Dev
@@ -92,13 +94,22 @@ in
     ".config/ghostty/config".source = mkLink "configs/ghostty";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
 
+    # Godot
+    "Library/Application Support/Godot/editor_settings-4.6.tres".source =
+      mkLink "configs/godot/settings.tres";
+    "Library/Application Support/Godot/text_editor_themes/Catppuccin-Macchiato.tet".source =
+      "${catppuccin-godot}/themes/Catppuccin Macchiato.tet";
+
     # Pi
     ".pi/agent/settings.json".source = mkLink "configs/pi/settings.json";
     ".pi/agent/models.json".source = mkLink "configs/pi/models.json";
     ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
     ".pi/agent/themes/theme.json".source = mkLink "configs/pi/theme.json";
     ".pi/agent/extensions".source = mkLink "configs/pi/extensions";
-    ".pi/agent" = { source = "${agents}"; recursive = true; };
+    ".pi/agent" = {
+      source = "${agents}";
+      recursive = true;
+    };
 
     # Zed
     ".config/zed/settings.json".source = mkLink "configs/zed/settings.json";
@@ -108,6 +119,8 @@ in
     ".claude/settings.json".source = mkLink "configs/claude/settings.json";
     ".claude/statusline-command.sh".source = mkLink "configs/claude/statusline-command.sh";
     ".claude/CLAUDE.md".source = "${agents}/AGENTS.md";
-    ".claude/skills" = { source = "${agents}/skills"; };
+    ".claude/skills" = {
+      source = "${agents}/skills";
+    };
   };
 }
