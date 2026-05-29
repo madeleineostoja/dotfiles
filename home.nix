@@ -27,8 +27,14 @@ in
 
   programs.home-manager.enable = true;
 
+  catppuccin = {
+    flavor = "macchiato";
+    accent = "mauve";
+  };
+
   # Modules
   imports = [
+    ./modules/git.nix
     ./modules/shell.nix
   ];
 
@@ -39,16 +45,12 @@ in
 
     # CLI tools
     bat
-    eza
     ripgrep
     fd
     fzf
     dust
 
     # Git
-    git
-    delta
-    gh
     lazygit
     worktrunk
 
@@ -88,7 +90,6 @@ in
 
   # Config files
   home.file = {
-    ".config/git/config".source = mkLink "configs/git/config";
     ".config/git/ignore".source = mkLink "configs/git/ignore";
     ".ssh/config".source = mkLink "configs/ssh";
     ".config/ghostty/config".source = mkLink "configs/ghostty";
