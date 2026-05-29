@@ -163,10 +163,23 @@ in
         success_symbol = "[❯](peach)";
         error_symbol = "[❯](red)";
       };
-      directory.style = "bold lavender";
-      git_branch.style = "bold mauve";
+      directory = {
+        style = "bold lavender";
+        read_only = " 󰌾";
+      };
+      git_branch = {
+        style = "bold mauve";
+        symbol = " ";
+      };
+      git_commit.tag_symbol = "  ";
       git_status.disabled = true;
+      package.symbol = "󰏗 ";
       nodejs.symbol = "󰎙 ";
+      python.symbol = " ";
+      ruby.symbol = " ";
+      nix_shell.symbol = " ";
+      docker_context.symbol = " ";
+      container.symbol = " ";
     };
   };
 
