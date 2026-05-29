@@ -1,12 +1,11 @@
 {
-  "lastChangelogVersion": "0.75.5",
+  "lastChangelogVersion": "0.77.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "openai-codex/gpt-5.5",
-    "openrouter/moonshotai/kimi-k2.6",
-    "openrouter/anthropic/claude-opus-4.7"
+    "openrouter/moonshotai/kimi-k2.6"
   ],
   "hideThinkingBlock": true,
   "steeringMode": "all",
@@ -18,7 +17,7 @@
   "packages": [
     "npm:pi-tool-display",
     "npm:pi-smart-fetch",
-    "git:github.com/madeleineostoja/pi-extensions",
-    "npm:@tintinweb/pi-subagents"
+    "npm:@tintinweb/pi-subagents",
+    "git:github.com/madeleineostoja/pi-extensions"
   ]
 }
