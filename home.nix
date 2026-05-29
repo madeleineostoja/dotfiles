@@ -90,7 +90,6 @@ in
 
   # Config files
   home.file = {
-    ".config/git/ignore".source = mkLink "configs/git/ignore";
     ".ssh/config".source = mkLink "configs/ssh";
     ".config/ghostty/config".source = mkLink "configs/ghostty";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
