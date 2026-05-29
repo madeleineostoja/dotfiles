@@ -126,7 +126,7 @@ git remote add upstream git@github.com:USERNAME/dotfiles.git
 # Work-specific changes:
 # - flake.nix: username
 # - launchd/com.user.nix-gc.plist: username
-# - configs/git/config: work email, signing key
+# - modules/git.nix: work email, signing key
 # - Brewfile: 1password, slack, zoom, etc.
 # - configs/ssh: 1Password agent socket
 
