@@ -10,10 +10,14 @@
   excludesfile = ~/.config/git/ignore
   editor = zed --wait
 
+[include]
+  path = ~/.config/git/catppuccin-delta.gitconfig
+
 [interactive]
   diffFilter = delta --color-only
 
 [delta]
+  features = catppuccin-macchiato
   navigate = true
   side-by-side = true
   line-numbers = true

@@ -16,6 +16,86 @@
         "type": "github"
       }
     },
+    "catppuccin-bat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751237777,
+        "narHash": "sha256-lJapSgRVENTrbmpVyn+UQabC9fpV1G1e+CdlJ090uvg=",
+        "owner": "catppuccin",
+        "repo": "bat",
+        "rev": "6810349b28055dce54076712fc05fc68da4b8ec0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "bat",
+        "type": "github"
+      }
+    },
+    "catppuccin-delta": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760466394,
+        "narHash": "sha256-NjqqB/BHqduiNWKeksiRZUMfjRUodJlsVu1yaEIZRsM=",
+        "owner": "catppuccin",
+        "repo": "delta",
+        "rev": "74b47a345638a2f19b3e5bdb9d7e4984066f9ac7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "delta",
+        "type": "github"
+      }
+    },
+    "catppuccin-eza": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756880706,
+        "narHash": "sha256-Q+C07IReQQBO5xYuFiFbS1wjmO4gdt/wIJWHNwIizSc=",
+        "owner": "catppuccin",
+        "repo": "eza",
+        "rev": "70f805f6cc27fa5b91750b75afb4296a0ec7fec9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "eza",
+        "type": "github"
+      }
+    },
+    "catppuccin-godot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725282184,
+        "narHash": "sha256-Og69rMEsygVYpWVGvJGsCydQzRC9BXBQxyrJ4kfdUEo=",
+        "owner": "catppuccin",
+        "repo": "godot",
+        "rev": "d8b72b679078f0103a5e5c1ef793c1d698a563b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "godot",
+        "type": "github"
+      }
+    },
+    "catppuccin-lazygit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775052480,
+        "narHash": "sha256-dwCRILNi2Qo8X0Y9ESnx2IjU1kSi4iOfcz5CoM2vSHY=",
+        "owner": "catppuccin",
+        "repo": "lazygit",
+        "rev": "798ad2e75a11766e9ba50e76e59aea6a81eb4866",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "lazygit",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -55,6 +135,11 @@
     "root": {
       "inputs": {
         "agents": "agents",
+        "catppuccin-bat": "catppuccin-bat",
+        "catppuccin-delta": "catppuccin-delta",
+        "catppuccin-eza": "catppuccin-eza",
+        "catppuccin-godot": "catppuccin-godot",
+        "catppuccin-lazygit": "catppuccin-lazygit",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

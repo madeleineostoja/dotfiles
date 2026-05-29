@@ -11,10 +11,40 @@
       url = "github:madeleineostoja/agents";
       flake = false;
     };
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-delta = {
+      url = "github:catppuccin/delta";
+      flake = false;
+    };
+    catppuccin-eza = {
+      url = "github:catppuccin/eza";
+      flake = false;
+    };
+    catppuccin-godot = {
+      url = "github:catppuccin/godot";
+      flake = false;
+    };
+    catppuccin-lazygit = {
+      url = "github:catppuccin/lazygit";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, agents, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      agents,
+      catppuccin-bat,
+      catppuccin-delta,
+      catppuccin-eza,
+      catppuccin-godot,
+      catppuccin-lazygit,
+      ...
+    }:
     let
       system = "aarch64-darwin";
       homeDirectory = "/Users/mads";
@@ -27,7 +57,17 @@
       homeConfigurations.mads = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
-        extraSpecialArgs = { inherit homeDirectory agents; };
+        extraSpecialArgs = {
+          inherit
+            homeDirectory
+            agents
+            catppuccin-bat
+            catppuccin-delta
+            catppuccin-eza
+            catppuccin-godot
+            catppuccin-lazygit
+            ;
+        };
       };
     };
 }
