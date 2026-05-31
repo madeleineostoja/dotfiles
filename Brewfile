@@ -8,6 +8,7 @@ cask "notion"
 cask "claude"
 cask "iina"
 cask "steam"
+cask "affinity"
 
 # Development
 cask "ghostty"
