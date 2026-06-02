@@ -3,7 +3,10 @@
     "openrouter": {
       "modelOverrides": {
         "moonshotai/kimi-k2.6": {
-          "name": "Kimi K2.6"
+          "name": "Kimi K2.6",
+          "compat": {
+            "requiresReasoningContentOnAssistantMessages": true
+          }
         }
       }
     }

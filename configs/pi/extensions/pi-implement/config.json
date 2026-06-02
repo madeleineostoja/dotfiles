@@ -5,6 +5,10 @@
   },
   "reviewer": {
     "model": "openai-codex/gpt-5.5",
-    "type": "general-purpose"
+    "type": "Review"
+  },
+  "planner": {
+    "model": "openai-codex/gpt-5.5",
+    "type": "Explore"
   }
 }
