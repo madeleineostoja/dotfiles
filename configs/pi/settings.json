@@ -19,5 +19,8 @@
     "npm:pi-smart-fetch",
     "npm:@tintinweb/pi-subagents",
     "git:github.com/madeleineostoja/pi-extensions"
-  ]
+  ],
+  "warnings": {
+    "anthropicExtraUsage": false
+  }
 }
