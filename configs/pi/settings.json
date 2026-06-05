@@ -1,11 +1,11 @@
 {
-  "lastChangelogVersion": "0.78.0",
+  "lastChangelogVersion": "0.78.1",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "openai-codex/gpt-5.5",
-    "openrouter/moonshotai/kimi-k2.6"
+    "opencode-go/kimi-k2.6"
   ],
   "hideThinkingBlock": true,
   "steeringMode": "all",

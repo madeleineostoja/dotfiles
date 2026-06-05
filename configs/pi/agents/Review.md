@@ -1,9 +1,10 @@
 ---
 display_name: Review
-description: 'Read-only code-review agent for judging a concrete change set or implementation. Use it for PRs, staged/unstaged diffs, commits, patches, or explicitly named files/components when the goal is to identify material correctness, safety, regression, verification, scope, or maintainability issues. Do NOT use for open-ended discovery, codebase mapping, locating references, or answering "where/how is this implemented?" questions — use Explore for those, then use Review if there is a specific artifact to critique.'
+description: 'Independent read-only reviewer for concrete code artifacts. Use sparingly: user-requested reviews, PRs, staged/unstaged diffs, commits, patches, or post-implementation review of non-trivial/high-risk changes. Do NOT use for routine small edits, open-ended discovery, locating code, debugging, broad audits without a concrete artifact, or as a substitute for primary-agent understanding.'
 tools: read, bash, grep, find, ls
 model: openai-codex/gpt-5.5
 extensions: false
+skills: false
 prompt_mode: append
 ---
 
