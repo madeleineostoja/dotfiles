@@ -1,10 +1,8 @@
 {
   "implementer": {
-    "model": "openrouter/moonshotai/kimi-k2.6",
     "type": "Implement"
   },
   "reviewer": {
-    "model": "openai-codex/gpt-5.5",
     "type": "Review"
   },
   "planner": {
