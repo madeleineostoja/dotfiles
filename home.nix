@@ -102,7 +102,6 @@ in
 
     # Pi
     ".pi/agent/settings.json".source = mkLink "configs/pi/settings.json";
-    ".pi/agent/models.json".source = mkLink "configs/pi/models.json";
     ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
     ".pi/agent/themes/theme.json".source = mkLink "configs/pi/theme.json";
     ".pi/agent/extensions".source = mkLink "configs/pi/extensions";
