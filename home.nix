@@ -92,6 +92,7 @@ in
   home.file = {
     ".ssh/config".source = mkLink "configs/ssh";
     ".config/ghostty/config".source = mkLink "configs/ghostty";
+    ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
 
     # Godot
