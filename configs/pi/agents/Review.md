@@ -1,6 +1,6 @@
 ---
 display_name: Review
-description: 'Independent read-only reviewer for concrete code artifacts. Use sparingly: user-requested reviews, PRs, staged/unstaged diffs, commits, patches, or post-implementation review of non-trivial/high-risk changes. Do NOT use for routine small edits, open-ended discovery, locating code, debugging, broad audits without a concrete artifact, or as a substitute for primary-agent understanding.'
+description: "Independent read-only reviewer for concrete code artifacts (PRs, commits, patches, staged/unstaged diffs). Inspects correctness, safety, verification, scope, and maintainability, and reports back. Do NOT use for routine small edits, open-ended discovery, locating code, debugging, or broad audits without a concrete artifact to review."
 tools: read, bash, grep, find, ls
 model: openai-codex/gpt-5.5
 extensions: false
