@@ -1,2 +1,3 @@
 [post-start]
 copy-tmp = "test -d {{ primary_worktree_path }}/tmp && cp -R {{ primary_worktree_path }}/tmp {{ worktree_path }}/ || true"
+trust-mise = "mise trust"
