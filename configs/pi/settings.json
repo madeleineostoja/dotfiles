@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.78.1",
+  "lastChangelogVersion": "0.79.1",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "high",
@@ -15,7 +15,6 @@
   "enableInstallTelemetry": false,
   "theme": "catppuccin-macchiato",
   "packages": [
-    "npm:pi-tool-display",
     "npm:pi-smart-fetch",
     "npm:@tintinweb/pi-subagents",
     "git:github.com/madeleineostoja/pi-extensions"
