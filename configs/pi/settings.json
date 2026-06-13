@@ -17,7 +17,8 @@
   "packages": [
     "npm:pi-smart-fetch",
     "npm:@tintinweb/pi-subagents",
-    "git:github.com/madeleineostoja/pi-extensions"
+    "git:github.com/madeleineostoja/pi-extensions",
+    "npm:pi-multi-auth"
   ],
   "warnings": {
     "anthropicExtraUsage": false
