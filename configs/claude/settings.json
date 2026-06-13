@@ -12,21 +12,12 @@
       "Bash(fd:*)",
       "Bash(ls:*)"
     ],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)"
-    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)"],
     "defaultMode": "auto"
   },
   "model": "opus",
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  },
   "spinnerTipsEnabled": false,
   "effortLevel": "high",
   "theme": "dark",
-  "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }

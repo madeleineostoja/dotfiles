@@ -118,7 +118,6 @@ in
 
     # Claude
     ".claude/settings.json".source = mkLink "configs/claude/settings.json";
-    ".claude/statusline-command.sh".source = mkLink "configs/claude/statusline-command.sh";
     ".claude/CLAUDE.md".source = "${agents}/AGENTS.md";
     ".claude/skills" = {
       source = "${agents}/skills";
