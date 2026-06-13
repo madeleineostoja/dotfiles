@@ -147,8 +147,8 @@
     enableZshIntegration = true;
     globalConfig = {
       tools = {
-        node = "lts";
-        python = "3.12";
+        node = "latest";
+        python = "latest";
       };
     };
   };
