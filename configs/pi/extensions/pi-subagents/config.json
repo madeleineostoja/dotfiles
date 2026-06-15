@@ -1,0 +1,12 @@
+{
+  "agents": {
+    "Explore": {
+      "model": "opencode-go/deepseek-v4-flash",
+      "thinking": "high"
+    },
+    "Review": {
+      "model": "openai-codex/gpt-5.5",
+      "thinking": "xhigh"
+    }
+  }
+}

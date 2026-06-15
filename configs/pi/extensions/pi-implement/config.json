@@ -1,12 +1,15 @@
 {
   "implementer": {
-    "type": "Implement"
+    "model": "openai-codex/gpt-5.5",
+    "type": "General",
+    "thinking": "medium"
   },
   "reviewer": {
     "type": "Review"
   },
   "planner": {
     "model": "openai-codex/gpt-5.5",
-    "type": "Explore"
+    "type": "General",
+    "thinking": "medium"
   }
 }
