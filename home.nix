@@ -17,6 +17,7 @@ let
   pnpmGlobals = [
     "sentry"
     "@earendil-works/pi-coding-agent"
+    "@schpet/linear-cli"
   ];
 in
 {
