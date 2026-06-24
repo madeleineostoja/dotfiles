@@ -1,7 +1,7 @@
 {
   "agents": {
     "Explore": {
-      "model": "openai-codex/gpt-5.4-mini",
+      "model": "openrouter/deepseek/deepseek-v4-flash",
       "thinking": "high"
     },
     "Review": {
