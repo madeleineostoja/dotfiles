@@ -28,6 +28,8 @@ in
   programs.home-manager.enable = true;
 
   catppuccin = {
+    enable = true;
+    autoEnable = true;
     flavor = "macchiato";
     accent = "mauve";
   };
