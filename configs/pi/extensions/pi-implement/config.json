@@ -10,6 +10,6 @@
   "planner": {
     "model": "openai-codex/gpt-5.5",
     "type": "General",
-    "thinking": "medium"
+    "thinking": "high"
   }
 }
