@@ -61,6 +61,7 @@ in
     pnpm
     nixfmt
     ctx7
+    supabase-cli
 
     # Other
     claude-code
