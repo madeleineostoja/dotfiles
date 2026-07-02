@@ -3,7 +3,9 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "medium",
-  "enabledModels": ["openai-codex/gpt-5.5"],
+  "enabledModels": [
+    "openai-codex/gpt-5.5"
+  ],
   "hideThinkingBlock": true,
   "steeringMode": "all",
   "followUpMode": "all",
@@ -13,7 +15,6 @@
   "theme": "catppuccin-macchiato",
   "packages": [
     "git:github.com/madeleineostoja/pi-extensions",
-    "npm:pi-smart-fetch",
-    "npm:pi-multi-auth"
+    "npm:pi-smart-fetch"
   ]
 }
