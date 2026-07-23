@@ -10,7 +10,7 @@ cask "steam"
 cask "affinity"
 
 # Development
-cask "ghostty"
+cask "cmux"
 cask "zed"
 cask "orbstack"
 cask "godot"
