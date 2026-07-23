@@ -156,7 +156,7 @@ Run `nixsync`.
 
 **Edit existing config:**
 
-- Non-shell (gitconfig, ghostty, ssh, claude): edit in repo, immediately live.
+- Non-shell (gitconfig, ghostty, cmux, ssh, claude): edit in repo, immediately live.
 - Shell (zsh, starship, mise, fzf): edit `modules/shell.nix`, run `nixsync`.
 
 **Roll back:**
