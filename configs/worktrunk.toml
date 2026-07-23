@@ -1,5 +1,8 @@
-[pre-start]
+[[pre-start]]
 mise = "mise trust"
 
-[post-start]
+[[pre-start]]
 copy = "wt step copy-ignored"
+
+[step.copy-ignored]
+exclude = ["node_modules/"]
