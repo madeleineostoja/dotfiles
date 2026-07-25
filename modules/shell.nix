@@ -49,7 +49,6 @@
       rmf = "rm -rf";
       pn = "pnpm";
       sb = "supabase";
-      cc = "claude";
       z = "zed";
 
       # Git
@@ -81,7 +80,7 @@
 
       # Shortcuts
       nixsync = "nix flake update agents --flake ~/dotfiles && home-manager switch --flake ~/dotfiles";
-      brewsync = "brew bundle install --cleanup --force --zap --file=~/dotfiles/Brewfile";
+      brewsync = "brew bundle install --force-cleanup --force --zap --file=~/dotfiles/Brewfile";
       sysupdate = "~/dotfiles/scripts/update.sh";
     };
 
