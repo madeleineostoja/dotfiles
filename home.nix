@@ -62,9 +62,6 @@ in
     nixfmt
     ctx7
     supabase-cli
-
-    # Other
-    claude-code
   ];
 
   # Environment
@@ -129,12 +126,5 @@ in
     # Zed
     ".config/zed/settings.json".source = mkLink "configs/zed/settings.json";
     ".config/zed/keymap.json".source = mkLink "configs/zed/keymap.json";
-
-    # Claude
-    ".claude/settings.json".source = mkLink "configs/claude/settings.json";
-    ".claude/CLAUDE.md".source = "${agents}/AGENTS.md";
-    ".claude/skills" = {
-      source = "${agents}/skills";
-    };
   };
 }

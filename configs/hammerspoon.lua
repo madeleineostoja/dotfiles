@@ -7,8 +7,7 @@ local apps = {
   w = "com.apple.Safari",
   e = "com.apple.mail",
   m = "com.apple.music",
-  n = "notion.id",
-  a = "com.anthropic.claudefordesktop"
+  n = "notion.id"
 }
 
 for key, bundleID in pairs(apps) do
