@@ -1,18 +1,28 @@
 {
-  "lastChangelogVersion": "0.80.10",
+  "lastChangelogVersion": "0.82.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "high",
-  "enabledModels": ["openai-codex/gpt-5.6-sol", "openai-codex/gpt-5.6-terra"],
+  "enabledModels": [
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-terra"
+  ],
   "hideThinkingBlock": true,
   "steeringMode": "all",
   "followUpMode": "all",
   "collapseChangelog": true,
   "quietStartup": true,
   "enableInstallTelemetry": false,
+  "defaultProjectTrust": "always",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "showCacheMissNotices": true,
   "theme": "catppuccin-macchiato",
   "packages": [
     "git:github.com/madeleineostoja/pi-extensions",
-    "npm:pi-smart-fetch"
+    "npm:pi-smart-fetch",
+    "npm:@narumitw/pi-usage",
+    "git:github.com/algal/pi-openai-server-compaction"
   ]
 }
