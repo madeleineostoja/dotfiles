@@ -26,5 +26,8 @@
     "matchTerminalBackground": false,
     "darkModeTintColor": "#1E2030",
     "tintOpacity": 1
+  },
+  "sidebar": {
+    "showNotificationMessage": false
   }
 }
