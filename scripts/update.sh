@@ -21,7 +21,7 @@ brew upgrade || echo "⚠️  some brew upgrades failed (continuing)"
 
 echo
 echo "▶ Reconciling Brewfile..."
-brew bundle install --cleanup --force --zap --file="${REPO_DIR}/Brewfile" \
+brew bundle install --force-cleanup --force --zap --file="${REPO_DIR}/Brewfile" \
   || echo "⚠️  Brewfile reconcile had issues"
 
 echo

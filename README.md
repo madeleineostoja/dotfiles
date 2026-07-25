@@ -156,7 +156,7 @@ Run `nixsync`.
 
 **Edit existing config:**
 
-- Non-shell (gitconfig, ghostty, cmux, ssh, claude): edit in repo, immediately live.
+- Non-shell (gitconfig, ghostty, cmux, ssh): edit in repo, immediately live.
 - Shell (zsh, starship, mise, fzf): edit `modules/shell.nix`, run `nixsync`.
 
 **Roll back:**
@@ -222,7 +222,7 @@ To reverse: edit `/etc/fstab`, remove the line.
 ```bash
 # 1. Edit Brewfile, remove cask line, commit
 # 2. Reconcile (uninstalls + zaps cask-defined associated files)
-brew bundle install --cleanup --force --zap --file=~/dotfiles/Brewfile
+brew bundle install --force-cleanup --force --zap --file=~/dotfiles/Brewfile
 
 # 3. Optional: open Pearcleaner → "Remaining Files" for orphans
 ```
