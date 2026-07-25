@@ -69,8 +69,8 @@ in
 
   # Environment
   home.sessionVariables = {
-    EDITOR = "zed --wait";
-    VISUAL = "zed --wait";
+    EDITOR = "hx";
+    VISUAL = "hx";
     PNPM_HOME = pnpmHome;
   };
 
@@ -91,11 +91,21 @@ in
     done
   '';
 
+  programs.helix = {
+    enable = true;
+    settings.editor = {
+      line-number = "relative";
+      cursorline = true;
+      bufferline = "multiple";
+    };
+  };
+
   # Config files
   home.file = {
     ".ssh/config".source = mkLink "configs/ssh";
-    ".config/ghostty/config".source = mkLink "configs/ghostty";
-    ".config/cmux/cmux.json".source = mkLink "configs/cmux.json";
+    "Library/Application Support/com.cmuxterm.app/config.ghostty".source =
+      mkLink "configs/cmux/config.ghostty";
+    ".config/cmux/cmux.json".source = mkLink "configs/cmux/cmux.json";
     ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
 

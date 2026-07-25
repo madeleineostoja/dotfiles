@@ -1,5 +1,7 @@
 font-family = MonaspiceNe Nerd Font
 font-size = 14
+sidebar-font-size = 13.5
+surface-tab-bar-font-size = 12.5
 
 theme = Catppuccin Macchiato
 

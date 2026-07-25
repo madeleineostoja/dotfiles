@@ -25,7 +25,7 @@
 
       core = {
         pager = "delta";
-        editor = "zed --wait";
+        editor = "hx";
       };
 
       merge.conflictstyle = "diff3";
