@@ -88,23 +88,17 @@ in
     done
   '';
 
-  programs.helix = {
-    enable = true;
-    settings.editor = {
-      line-number = "relative";
-      cursorline = true;
-      bufferline = "multiple";
-    };
-  };
-
   # Config files
   home.file = {
     ".ssh/config".source = mkLink "configs/ssh";
+    ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
+    ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
+
+    # cmux
     "Library/Application Support/com.cmuxterm.app/config.ghostty".source =
       mkLink "configs/cmux/config.ghostty";
     ".config/cmux/cmux.json".source = mkLink "configs/cmux/cmux.json";
-    ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
-    ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
+    ".config/otty/config.toml".source = mkLink "configs/otty/config.toml";
 
     # Godot
     "Library/Application Support/Godot/editor_settings-4.6.tres".source =

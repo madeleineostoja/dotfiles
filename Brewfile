@@ -11,6 +11,7 @@ cask "affinity"
 
 # Development
 cask "cmux"
+cask "otty"
 cask "zed"
 cask "orbstack"
 cask "godot"
