@@ -48,7 +48,6 @@
       c = "clear";
       rmf = "rm -rf";
       pn = "pnpm";
-      sb = "supabase";
       z = "zed";
 
       # Git
@@ -172,7 +171,7 @@
       };
     };
   };
-  
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
