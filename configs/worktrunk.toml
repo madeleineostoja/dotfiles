@@ -1,8 +1,11 @@
 [[pre-start]]
 mise = "mise trust"
-
-[[pre-start]]
 copy = "wt step copy-ignored"
+
+[merge]
+squash = false
+rebase = false
+remove = true
 
 [step.copy-ignored]
 exclude = ["node_modules/"]
