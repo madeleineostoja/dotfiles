@@ -20,8 +20,8 @@
   "showCacheMissNotices": true,
   "theme": "catppuccin-macchiato",
   "packages": [
-    "git:github.com/madeleineostoja/pi-extensions",
     "npm:pi-smart-fetch",
-    "npm:@narumitw/pi-usage"
+    "npm:@narumitw/pi-usage",
+    "git:github.com/madeleineostoja/pipkin"
   ]
 }

@@ -93,12 +93,12 @@ in
     ".ssh/config".source = mkLink "configs/ssh";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
     ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
+    ".config/otty/config.toml".source = mkLink "configs/otty.toml";
 
     # cmux
     "Library/Application Support/com.cmuxterm.app/config.ghostty".source =
       mkLink "configs/cmux/config.ghostty";
     ".config/cmux/cmux.json".source = mkLink "configs/cmux/cmux.json";
-    ".config/otty/config.toml".source = mkLink "configs/otty/config.toml";
 
     # Godot
     "Library/Application Support/Godot/editor_settings-4.6.tres".source =
@@ -107,15 +107,13 @@ in
       "${catppuccin-godot}/themes/Catppuccin Macchiato.tet";
 
     # Pi
-    ".pi/agent/settings.json".source = mkLink "configs/pi/settings.json";
-    ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
-    ".pi/agent/themes/theme.json".source = mkLink "configs/pi/theme.json";
-    ".pi/agent/extensions".source = mkLink "configs/pi/extensions";
-    ".pi/agent/agents".source = mkLink "configs/pi/agents";
     ".pi/agent" = {
       source = "${agents}";
       recursive = true;
     };
+    ".pi/agent/settings.json".source = mkLink "configs/pi/settings.json";
+    ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
+    ".pi/agent/pipkin/config.json".source = mkLink "configs/pi/pipkin.json";
 
     # Zed
     ".config/zed/settings.json".source = mkLink "configs/zed/settings.json";
