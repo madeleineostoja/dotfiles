@@ -15,8 +15,8 @@ macos-option-as-alt = "left"
 
 # window-layout = "sidebar-left" (reset to default)
 # sidebar-visible = true (reset to default)
-sidebar-width = 211
-details-panel-width = 282
+# sidebar-width = 244 (reset to default)
+details-panel-width = 230
 
 # working-directory = "inherit" (reset to default)
 # window-working-directory = "home" (reset to default)
@@ -123,7 +123,7 @@ privilege-notification-shell = false
 
 clipboard-trim-trailing-spaces = true
 
-privilege-badge-agent-processing = true
+# privilege-badge-agent-processing = true (reset to default)
 
 privilege-caffeinate-agent-processing = true
 
@@ -135,7 +135,7 @@ auto-theme-dark-mode = false
 
 # cursor-style = "underline" (reset to default)
 
-cursor-style = "bar"
+# cursor-style = "bar" (reset to default)
 
 # cursor-style-blink = "default_on" (reset to default)
 
@@ -161,10 +161,10 @@ palette-12 = "#78a1f6"
 palette-13 = "#f2a9dd"
 palette-14 = "#63cbc0"
 palette-15 = "#b8c0e0"
-selection-foreground = "#cad3f5"
-selection-background = "#5b6078"
-cursor-color = "#f4dbd6"
-cursor-text = "#24273a"
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
 
 cursor-style-blink = "default_on"
 
@@ -173,9 +173,46 @@ cursor-style-blink = "default_on"
 auto-hide-tabs-panel = "always"
 
 keybind = "cmd+b=toggle_details_panel"
-keybind = "cmd+shift+a=compose_overlay"
 keybind = "cmd+shift+e=details_tab_files"
 keybind = "cmd+shift+g=details_tab_git"
 keybind = "cmd+opt+g=find_previous"
 keybind = "cmd+shift+l=unbind"
 keybind = "cmd+shift+r=unbind"
+keybind = "cmd+shift+c=compose_overlay"
+keybind = "cmd+shift+left_bracket=previous_tab"
+keybind = "cmd+shift+right_bracket=next_tab"
+
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
+
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
+
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
+
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
+
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
+
+# selection-foreground = "#cad3f5" (reset to default)
+# selection-background = "#5b6078" (reset to default)
+# cursor-color = "#f4dbd6" (reset to default)
+# cursor-text = "#24273a" (reset to default)
+
+selection-foreground = "#cad3f5"
+selection-background = "#5b6078"
+cursor-color = "#f4dbd6"
+cursor-text = "#24273a"

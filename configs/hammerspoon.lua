@@ -1,7 +1,7 @@
 local hyper = { "cmd", "ctrl", "alt", "shift" }
 
 local apps = {
-  t = "com.cmuxterm.app",
+  t = "io.appmakes.otty",
   x = "dev.zed.Zed",
   b = "net.imput.helium",
   w = "com.apple.Safari",
