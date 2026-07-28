@@ -22,6 +22,7 @@
   "packages": [
     "npm:pi-smart-fetch",
     "npm:@narumitw/pi-usage",
-    "git:github.com/madeleineostoja/pipkin"
+    "git:github.com/madeleineostoja/pipkin",
+    "npm:pi-catppuccin"
   ]
 }
