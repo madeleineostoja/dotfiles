@@ -1,5 +1,21 @@
 [
   {
+    "bindings": {
+      "cmd-w": [
+        "pane::CloseActiveItem",
+        {
+          "close_pinned": false
+        }
+      ]
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-w": "workspace::CloseActiveDock"
+    }
+  },
+  {
     "context": "Workspace",
     "bindings": {
       "cmd-shift-g": "git_panel::ToggleFocus",
@@ -22,5 +38,5 @@
     "unbind": {
       "cmd-shift-g": "search::SelectPreviousMatch",
     },
-  },
+  }
 ]
