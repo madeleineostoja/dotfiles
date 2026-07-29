@@ -42,10 +42,6 @@ autocomplete-shortcut = "ctrl+space"
 autocomplete-show-candidates = "option-escape"
 # autocomplete-on-device-learning = true (reset to default)
 # autocomplete-history-ignore = "ssh *" (reset to default)
-# autocomplete-history-ignore = "export *TOKEN*" (reset to default)
-# autocomplete-history-ignore = "export *KEY*" (reset to default)
-# autocomplete-history-ignore = "*--password *" (reset to default)
-# autocomplete-history-ignore = "*--token *" (reset to default)
 
 # notification-foreground = "off" (reset to default)
 # privilege-sound-on-error = false (reset to default)
@@ -53,7 +49,6 @@ privilege-sound-shell = false
 # privilege-notification-on-finish = false (reset to default)
 privilege-notification-on-error = false
 privilege-notification-on-watch-finish = false
-# privilege-notification-shell = false (reset to default)
 
 # privilege-badge-exit-status = true (reset to default)
 # privilege-badge-activity = false (reset to default)
@@ -63,7 +58,6 @@ privilege-notification-on-watch-finish = false
 
 # privilege-notify-agent-task-complete = false (reset to default)
 # privilege-notify-agent-awaiting-input = false (reset to default)
-# privilege-caffeinate-agent-processing = false (reset to default)
 
 # show-auto-approve = false (reset to default)
 # auto-approve-enabled = false (reset to default)
@@ -89,62 +83,31 @@ new-tab-position = "after-current"
 foreground = "#cad3f5"
 background = "#24273a"
 palette-0 = "#494d64"
-# palette-1 = "#ed8796" (reset to default)
-# palette-2 = "#a6da95" (reset to default)
-# palette-3 = "#eed49f" (reset to default)
-# palette-4 = "#8aadf4" (reset to default)
-# palette-5 = "#f5bde6" (reset to default)
-# palette-6 = "#8bd5ca" (reset to default)
-# palette-7 = "#a5adcb" (reset to default)
-# palette-8 = "#5b6078" (reset to default)
-# palette-9 = "#ec7486" (reset to default)
-# palette-10 = "#8ccf7f" (reset to default)
-# palette-11 = "#e1c682" (reset to default)
-# palette-12 = "#78a1f6" (reset to default)
-# palette-13 = "#f2a9dd" (reset to default)
-# palette-14 = "#63cbc0" (reset to default)
-# palette-15 = "#b8c0e0" (reset to default)
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
 zoxide-enabled = false
 
 session-restore-multiplayer = false
 
-# privilege-notification-on-finish = true (reset to default)
 
-# privilege-notification-on-finish = true (reset to default)
 
 privilege-notification-shell = false
 
-# clipboard-trim-trailing-spaces = true (reset to default)
 
 clipboard-trim-trailing-spaces = true
 
-# privilege-badge-agent-processing = true (reset to default)
 
 privilege-caffeinate-agent-processing = true
 
-# window-layout = "tabs-top" (reset to default)
 
-# window-layout = "tabs-top" (reset to default)
 
 auto-theme-dark-mode = false
 
 # cursor-style = "underline" (reset to default)
 
-# cursor-style = "bar" (reset to default)
 
-# cursor-style-blink = "default_on" (reset to default)
 
 # cursor-animation = "smooth" (reset to default)
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
 palette-1 = "#ed8796"
 palette-2 = "#a6da95"
@@ -161,14 +124,9 @@ palette-12 = "#78a1f6"
 palette-13 = "#f2a9dd"
 palette-14 = "#63cbc0"
 palette-15 = "#b8c0e0"
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
 cursor-style-blink = "default_on"
 
-# window-layout = "tabs-top" (reset to default)
 
 auto-hide-tabs-panel = "always"
 
@@ -178,39 +136,15 @@ keybind = "cmd+shift+g=details_tab_git"
 keybind = "cmd+opt+g=find_previous"
 keybind = "cmd+shift+l=unbind"
 keybind = "cmd+shift+r=unbind"
-keybind = "cmd+shift+c=compose_overlay"
 keybind = "cmd+shift+left_bracket=previous_tab"
 keybind = "cmd+shift+right_bracket=next_tab"
+keybind = "cmd+shift+a=compose_overlay"
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
-# selection-foreground = "#cad3f5" (reset to default)
-# selection-background = "#5b6078" (reset to default)
-# cursor-color = "#f4dbd6" (reset to default)
-# cursor-text = "#24273a" (reset to default)
 
 selection-foreground = "#cad3f5"
 selection-background = "#5b6078"
