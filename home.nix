@@ -93,7 +93,7 @@ in
     ".ssh/config".source = mkLink "configs/ssh";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
     ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
-    ".config/otty/config.toml".source = mkLink "configs/otty.toml";
+    ".config/otty".source = mkLink "configs/otty";
 
     # cmux
     "Library/Application Support/com.cmuxterm.app/config.ghostty".source =
