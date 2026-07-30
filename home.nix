@@ -60,7 +60,6 @@ in
     mise
     pnpm
     nixfmt
-    ctx7
     supabase-cli
   ];
 
