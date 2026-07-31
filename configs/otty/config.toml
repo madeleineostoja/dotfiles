@@ -37,8 +37,8 @@ session-log-size-mb = 20
 # cli-allow-overwrite = false (reset to default)
 
 autocomplete-inline-suggestion = false
-# autocomplete-shortcut = "ctrl+space" (reset to default)
-autocomplete-show-candidates = "option-escape"
+autocomplete-shortcut = "disable"
+autocomplete-show-candidates = "disable"
 # autocomplete-on-device-learning = true (reset to default)
 # autocomplete-history-ignore = "ssh *" (reset to default)
 
