@@ -54,7 +54,6 @@ in
 
     # Git
     lazygit
-    worktrunk
 
     # Dev
     mise
