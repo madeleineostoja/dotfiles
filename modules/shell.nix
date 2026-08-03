@@ -148,6 +148,10 @@
           "Cmd-s" = ":write";
           "Cmd-/" = "toggle_comments";
           "Cmd-." = "code_action";
+          "C-a" = "goto_line_start";
+          "C-e" = "goto_line_end";
+          "A-b" = "move_prev_word_start";
+          "A-f" = "move_next_word_start";
           F2 = "rename_symbol";
           F12 = "goto_definition";
           "S-F12" = "goto_reference";
@@ -156,6 +160,10 @@
           "Cmd-s" = ":write";
           "Cmd-/" = "toggle_comments";
           "Cmd-." = "code_action";
+          "C-a" = "goto_line_start";
+          "C-e" = "goto_line_end";
+          "A-b" = "move_prev_word_start";
+          "A-f" = "move_next_word_start";
           F2 = "rename_symbol";
           F12 = "goto_definition";
           "S-F12" = "goto_reference";
@@ -164,6 +172,10 @@
           "Cmd-s" = ":write";
           "Cmd-/" = "toggle_comments";
           "Cmd-." = "code_action";
+          "C-a" = "goto_line_start";
+          "C-e" = "goto_line_end";
+          "A-b" = "move_prev_word_start";
+          "A-f" = "move_next_word_start";
           F2 = "rename_symbol";
           F12 = "goto_definition";
           "S-F12" = "goto_reference";
