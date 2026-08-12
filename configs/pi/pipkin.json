@@ -17,5 +17,12 @@
       "model": "openai-codex/gpt-5.6-sol",
       "thinking": "high"
     }
+  },
+  "sandbox": {
+    "writable": [
+      "~/.local/state/gh",
+      "~/.local/state/pnpm",
+      "~/Library/pnpm/store"
+    ]
   }
 }
