@@ -8,6 +8,7 @@ cask "notion"
 cask "iina"
 cask "steam"
 cask "affinity"
+cask "chatgpt"
 
 # Development
 cask "cmux"
