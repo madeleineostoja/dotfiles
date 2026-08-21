@@ -60,6 +60,7 @@ in
     pnpm
     nixfmt
     supabase-cli
+    fresh-editor
   ];
 
   # Environment
@@ -92,6 +93,7 @@ in
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
     ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
     ".config/otty".source = mkLink "configs/otty";
+    ".config/fresh".source = mkLink "configs/fresh";
 
     # cmux
     "Library/Application Support/com.cmuxterm.app/config.ghostty".source =
