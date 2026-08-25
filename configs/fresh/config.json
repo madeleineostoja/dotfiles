@@ -48,10 +48,16 @@
       "when": "normal"
     },
     {
-      "key": "'",
+      "key": "o",
       "modifiers": ["ctrl"],
       "action": "quick_open_files",
       "when": "global"
+    },
+    {
+      "key": "o",
+      "modifiers": ["ctrl", "alt"],
+      "action": "open",
+      "when": "normal"
     },
     {
       "key": ";",
