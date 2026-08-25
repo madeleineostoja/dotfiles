@@ -65,9 +65,8 @@ in
 
   # Environment
   home.sessionVariables = {
-    EDITOR = "hx";
-    VISUAL = "hx";
     PNPM_HOME = pnpmHome;
+    PNPM_CONFIG_STORE_DIR = "${pnpmHome}/store";
   };
 
   # Fix PNPM global installs
