@@ -2,6 +2,8 @@
 
 {
   home.sessionVariables = {
+    EDITOR = "hx";
+    VISUAL = "hx";
     GH_COLOR_LABELS = "1";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     RG_COLORS = lib.concatStringsSep ":" [
@@ -49,6 +51,7 @@
       rmf = "rm -rf";
       pn = "pnpm";
       z = "zed";
+      piup = "pi update && pi update --extensions";
 
       # Git
       g = "git";
@@ -84,6 +87,10 @@
     };
 
     initContent = ''
+      if [[ -r /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+        source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      fi
+
       setopt AUTO_CD INTERACTIVE_COMMENTS EXTENDED_GLOB NO_BEEP
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
