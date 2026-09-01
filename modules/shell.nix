@@ -52,6 +52,7 @@
 
       # Convenience
       c = "clear";
+      fr = "fresh";
       rmf = "rm -rf";
       pn = "pnpm";
       z = "zed";
@@ -59,29 +60,19 @@
 
       # Git
       g = "git";
+      lg = "lazygit";
       gs = "git status";
       ga = "git add";
-      gaa = "git add --all";
       gc = "git commit -m";
-      gaac = "git add --all && git commit -m";
-      grm = "git rm";
-      gb = "git branch";
-      gab = "git checkout -b";
-      gcb = "git checkout";
-      grmb = "git branch -D";
-      grmrb = "git push origin --delete";
-      grmtag = "git tag -d";
-      gdis = "git checkout --";
       glog = "git log --graph";
       gpull = "git pull";
       grpull = "git fetch && git rebase";
       gpush = "git push";
       gpushf = "git push --force-with-lease --force-if-includes";
-      greset = "git reset HEAD~1";
       grecommit = "git commit --amend -C HEAD";
       gcp = "git cherry-pick";
-      gr = "git rebase";
       gf = "git fetch";
+      grmb = "git branch -D";
       gbclean = "git branch --merged main | grep -v '^[* ]*main$' | xargs -r git branch -d";
     };
 
