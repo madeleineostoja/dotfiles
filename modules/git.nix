@@ -32,7 +32,7 @@
 
       core = {
         pager = "delta";
-        editor = "hx";
+        editor = "fresh";
       };
 
       merge.conflictstyle = "diff3";

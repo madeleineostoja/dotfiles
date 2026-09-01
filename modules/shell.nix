@@ -4,8 +4,8 @@
   home.packages = [ pkgs.worktrunk ];
 
   home.sessionVariables = {
-    EDITOR = "hx";
-    VISUAL = "hx";
+    EDITOR = "fresh";
+    VISUAL = "fresh";
     GH_COLOR_LABELS = "1";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     RG_COLORS = lib.concatStringsSep ":" [
@@ -124,69 +124,6 @@
       nix_shell.symbol = " ";
       docker_context.symbol = " ";
       container.symbol = " ";
-    };
-  };
-
-  programs.helix = {
-    enable = true;
-    settings = {
-      editor = {
-        line-number = "relative";
-        cursorline = true;
-        bufferline = "multiple";
-        color-modes = true;
-        popup-border = "all";
-        end-of-line-diagnostics = "hint";
-        cursor-shape = {
-          normal = "block";
-          insert = "bar";
-          select = "underline";
-        };
-        indent-guides = {
-          render = true;
-          character = "╎";
-          skip-levels = 1;
-        };
-        inline-diagnostics.cursor-line = "warning";
-      };
-      keys = {
-        normal = {
-          "Cmd-s" = ":write";
-          "Cmd-/" = "toggle_comments";
-          "Cmd-." = "code_action";
-          "C-a" = "goto_line_start";
-          "C-e" = "goto_line_end";
-          "A-b" = "move_prev_word_start";
-          "A-f" = "move_next_word_start";
-          F2 = "rename_symbol";
-          F12 = "goto_definition";
-          "S-F12" = "goto_reference";
-        };
-        insert = {
-          "Cmd-s" = ":write";
-          "Cmd-/" = "toggle_comments";
-          "Cmd-." = "code_action";
-          "C-a" = "goto_line_start";
-          "C-e" = "goto_line_end";
-          "A-b" = "move_prev_word_start";
-          "A-f" = "move_next_word_start";
-          F2 = "rename_symbol";
-          F12 = "goto_definition";
-          "S-F12" = "goto_reference";
-        };
-        select = {
-          "Cmd-s" = ":write";
-          "Cmd-/" = "toggle_comments";
-          "Cmd-." = "code_action";
-          "C-a" = "goto_line_start";
-          "C-e" = "goto_line_end";
-          "A-b" = "move_prev_word_start";
-          "A-f" = "move_next_word_start";
-          F2 = "rename_symbol";
-          F12 = "goto_definition";
-          "S-F12" = "goto_reference";
-        };
-      };
     };
   };
 
