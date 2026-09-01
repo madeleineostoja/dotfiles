@@ -77,7 +77,6 @@ This runs the complete updater:
 3. Home Manager switch
 4. `mise install`
 5. `mise upgrade`
-6. Best-effort `nix store optimise`
 
 Review and commit dependency updates afterward:
 
@@ -88,12 +87,21 @@ git commit -am "chore: quarterly update"
 git push
 ```
 
+### On demand
+
+```bash
+sys cleanup
+```
+
+This removes stale Homebrew artifacts and cache files, then optimises the Nix store. The first Nix optimisation can take several minutes.
+
 ### Command boundaries
 
 - `sys sync` reconciles applications, updates the `agents` input in `flake.lock`, and applies the Home Manager configuration.
 - `sys sync --apps` reconciles only the Brewfile's Homebrew and MAS declarations.
 - `sys sync --nix` updates only the `agents` input and applies Home Manager.
 - `sys update` updates every Nix input as part of the complete quarterly updater above.
+- `sys cleanup` reclaims disk space without updating or reconciling dependencies.
 
 To roll back a Home Manager generation without updating inputs:
 
