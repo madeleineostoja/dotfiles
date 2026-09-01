@@ -38,6 +38,12 @@
       ignoreSpace = true;
     };
 
+    profileExtra = ''
+      if [[ -x /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+    '';
+
     shellAliases = {
       # Tool swaps
       cat = "bat --paging=never";
@@ -81,8 +87,8 @@
       gbclean = "git branch --merged main | grep -v '^[* ]*main$' | xargs -r git branch -d";
 
       # Shortcuts
-      nixsync = "nix flake update agents --flake ~/dotfiles && home-manager switch --flake ~/dotfiles";
-      brewsync = "brew bundle install --force-cleanup --force --zap --file=~/dotfiles/Brewfile";
+      nixsync = "nix run --no-write-lock-file ~/dotfiles#home-manager -- switch --flake ~/dotfiles";
+      appsync = "~/dotfiles/scripts/appsync.sh";
       sysupdate = "~/dotfiles/scripts/update.sh";
     };
 

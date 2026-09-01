@@ -13,7 +13,7 @@
   "collapseChangelog": true,
   "quietStartup": true,
   "enableInstallTelemetry": false,
-  "defaultProjectTrust": "always",
+  "defaultProjectTrust": "ask",
   "terminal": {
     "showTerminalProgress": true
   },
