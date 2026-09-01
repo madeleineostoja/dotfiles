@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   homeDirectory,
   agents,
   catppuccin-godot,
@@ -11,14 +10,6 @@
 let
   dotfiles = "${homeDirectory}/dotfiles";
   mkLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
-  pnpmHome = "${homeDirectory}/Library/pnpm";
-
-  # Global pnpm packages, if a nix package isn't available or updated enough
-  pnpmGlobals = [
-    "sentry"
-    "@earendil-works/pi-coding-agent"
-    "@schpet/linear-cli"
-  ];
 in
 {
   home.username = baseNameOf homeDirectory;
@@ -56,35 +47,11 @@ in
     lazygit
 
     # Dev
-    mise
-    pnpm
     nixfmt
+    # Keep until its remaining workflow is owned by the relevant repository.
     supabase-cli
     fresh-editor
   ];
-
-  # Environment
-  home.sessionVariables = {
-    PNPM_HOME = pnpmHome;
-    PNPM_CONFIG_STORE_DIR = "${pnpmHome}/store";
-  };
-
-  # Fix PNPM global installs
-  home.sessionPath = [
-    pnpmHome
-    "${pnpmHome}/bin"
-  ];
-
-  # Ensure global pnpm packages are installed
-  home.activation.pnpmGlobals = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    export PNPM_HOME="${pnpmHome}"
-    export PATH="${pkgs.nodejs}/bin:${pkgs.pnpm}/bin:$PNPM_HOME/bin:$PATH"
-    for pkg in ${lib.escapeShellArgs pnpmGlobals}; do
-      if ! ${pkgs.pnpm}/bin/pnpm ls -g --depth=0 2>/dev/null | grep -q "$pkg"; then
-        run ${pkgs.pnpm}/bin/pnpm add -g --ignore-scripts "$pkg"
-      fi
-    done
-  '';
 
   # Config files
   home.file = {

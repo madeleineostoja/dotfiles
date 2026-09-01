@@ -43,18 +43,14 @@ if command -v nix >/dev/null 2>&1; then
   # GC happens via launch agent; not duplicated here
 fi
 
-# --- mise ---
+# --- mise-managed tools ---
 if command -v mise >/dev/null 2>&1; then
   echo
-  echo "▶ mise plugin update..."
-  mise plugin update || echo "⚠️  mise plugin update had issues"
-fi
-
-# --- pnpm globals ---
-if command -v pnpm >/dev/null 2>&1; then
-  echo
-  echo "▶ pnpm update -g --latest..."
-  pnpm update -g --latest || echo "⚠️  pnpm global update had issues"
+  echo "▶ mise upgrade..."
+  (
+    cd "$HOME"
+    mise upgrade
+  ) || echo "⚠️  mise upgrade had issues"
 fi
 
 end_time=$(date +%s)

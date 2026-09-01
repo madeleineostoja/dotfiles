@@ -4,9 +4,11 @@ My personal workstation configuration, running on a Macbook Pro
 
 ## Stack
 
-- **Nix + home-manager** — packages, shell, shell-integrated tools
-- **Homebrew** — GUI casks and fonts (`Brewfile`)
-- **mise** — per-project language runtimes
+- **Nix + Home Manager** — workstation packages, shell, native CLI tools
+- **Homebrew** — GUI casks, fonts, and the OrbStack container runtime (`Brewfile`)
+- **mise** — language runtimes, global ecosystem CLIs, and per-project runtime switching
+- **pnpm** — repository JavaScript dependency/package manager
+- **Worktrunk** — personal worktree UX only
 
 ## Repo layout
 
@@ -98,7 +100,7 @@ MacOS security patches, browsers, Zed, casks with built-in updaters all self-upd
 sysupdate
 ```
 
-Runs `scripts/update.sh`: brew update/upgrade, Brewfile reconcile with `--zap`, `nix flake update`, `home-manager switch`, mise plugin update.
+Runs `scripts/update.sh`: brew update/upgrade, Brewfile reconcile with `--zap`, `nix flake update`, `home-manager switch`, and `mise upgrade` from `$HOME` for globally managed tools.
 
 After:
 
@@ -136,11 +138,14 @@ git fetch upstream && git merge upstream/main && git push
 
 ## Common operations
 
-**Add a CLI tool (no shell integration):**
-Edit `home.nix` → `home.packages`. Run `nixsync`.
+**Add a native CLI tool:**
+Edit `home.nix` → `home.packages`. For a tool with Home Manager shell integration, add its `programs.<tool>` block in `modules/shell.nix`. Run `nixsync`.
 
-**Add a CLI tool (with shell integration):**
-Edit `modules/shell.nix` → add `programs.<tool>` block with `enableZshIntegration = true`. Run `nixsync`.
+**Add a global language runtime or personal ecosystem CLI:**
+Edit `programs.mise.globalConfig` in `modules/shell.nix`. Run `nixsync`.
+
+**Add a project CLI or JavaScript dependency:**
+Add it to that repository's `devDependencies` with pnpm; do not install it globally.
 
 **Add a GUI app:**
 Edit `Brewfile` → `cask "name"`. Run `brew bundle install`.
@@ -184,6 +189,16 @@ cat ~/.zshenv
 cd /path/to/project
 mise use node@20
 ```
+
+### Ownership boundaries
+
+If a tool conceptually belongs to the workstation/user, manage it through Nix or mise. If its version is part of a repository's build, test, or runtime contract, install it in that repository instead.
+
+- Native workstation tools such as `bat`, `ripgrep`, `fd`, `fzf`, and `dust` belong in Nix.
+- Node, pnpm, Python, and personal npm CLIs such as Pi, Linear, and Sentry belong in global mise configuration.
+- Wrangler, Neon CLI, Drizzle Kit, Turbo, Vitest, Playwright, Storybook, and lint/typecheck tooling belong in repository `devDependencies`.
+- Databases, queues, Redis-like services, and other stateful development services are never host installs. Repositories own their lifecycle through platform simulators, disposable remote resources, or project-scoped OrbStack containers.
+- Worktrunk only creates and manages worktrees. Repositories must provision their own environment and work identically with a plain `git worktree add`; do not add Worktrunk configuration to ordinary repositories.
 
 **Manual GC (bypass throttle):**
 
