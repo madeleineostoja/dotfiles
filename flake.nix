@@ -1,5 +1,5 @@
 {
-  description = "MacBook configuration";
+  description = "Mads Macbook";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -21,13 +21,13 @@
     {
       nixpkgs,
       home-manager,
-      agents,
       catppuccin,
+      agents,
       ...
     }:
     let
       system = "aarch64-darwin";
-      homeDirectory = "/Users/mads";
+      user = "mads";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -39,14 +39,14 @@
         program = "${home-manager.packages.${system}.default}/bin/home-manager";
       };
 
-      homeConfigurations.mads = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home.nix
           catppuccin.homeModules.catppuccin
         ];
         extraSpecialArgs = {
-          inherit homeDirectory agents;
+          inherit user agents;
         };
       };
     };

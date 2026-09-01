@@ -18,11 +18,7 @@
       "thinking": "high"
     }
   },
-  "mcp": {
-    "linear": {
-      "url": "https://mcp.linear.app/mcp"
-    }
-  },
+  "mcp": {},
   "sandbox": {
     "writable": [
       "~/.local/state/gh",

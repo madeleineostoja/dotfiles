@@ -21,8 +21,8 @@
   "theme": "catppuccin-macchiato",
   "tuiMode": "fullscreen",
   "packages": [
-    "npm:@narumitw/pi-usage",
     "git:github.com/madeleineostoja/pipkin",
-    "npm:pi-catppuccin"
+    "npm:pi-catppuccin",
+    "npm:@narumitw/pi-usage"
   ]
 }
