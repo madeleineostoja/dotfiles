@@ -16,11 +16,13 @@ usage() {
 Usage:
   sys sync [--nix] [--apps]
   sys update
+  sys cleanup
   sys help
 
 Commands:
   sync      Reconcile Nix and applications. Flags select a subset.
   update    Upgrade and reconcile the complete system.
+  cleanup   Reclaim disk space from package stores and caches.
 
 Sync filters:
   --nix     Update the agents input and apply Home Manager.
@@ -92,7 +94,7 @@ quiet_step() {
     return 1
   fi
 
-  gum style --foreground "$success" "  ✓ $current_step"
+  gum style --foreground "$muted" "  → $current_step"
 }
 
 finish() {
@@ -110,8 +112,6 @@ finish() {
 reconcile_apps() {
   step "Reconciling Brewfile"
   brew bundle install --quiet --force-cleanup --force --zap --file="$BREWFILE"
-  step "Cleaning Homebrew artifacts"
-  brew cleanup --quiet --prune=all
 }
 
 apply_home_manager() {
@@ -219,16 +219,40 @@ run_update() {
     mise upgrade
   )
 
-  section "Maintenance"
-  if ! quiet_step "Optimising the Nix store" nix store optimise; then
-    gum style --foreground "$warning" "  ! Nix store optimisation failed; continuing" >&2
-  fi
-
   finish "System update"
   printf '\n'
   gum style --bold "Review and commit"
   gum style --foreground "$muted" "  cd ~/dotfiles && git diff flake.lock"
   gum style --foreground "$muted" "  Roll back with: home-manager switch --rollback"
+}
+
+run_cleanup() {
+  if (($# > 0)); then
+    case "$1" in
+      -h|--help)
+        usage
+        return
+        ;;
+      *)
+        usage_error "cleanup does not accept options"
+        ;;
+    esac
+  fi
+
+  require_repo
+  start_time=$(date +%s)
+  banner "System cleanup"
+
+  section "Applications"
+  step "Cleaning Homebrew artifacts"
+  brew cleanup --quiet --prune=all
+
+  section "Nix"
+  if ! quiet_step "Optimising the Nix store" nix store optimise; then
+    gum style --foreground "$warning" "  ! Nix store optimisation failed; continuing" >&2
+  fi
+
+  finish "System cleanup"
 }
 
 case "${1:-}" in
@@ -239,6 +263,10 @@ case "${1:-}" in
   update)
     shift
     run_update "$@"
+    ;;
+  cleanup)
+    shift
+    run_cleanup "$@"
     ;;
   help|-h|--help|"")
     usage
