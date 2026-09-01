@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 # macOS defaults — run once after first-time setup, rerun anytime to reapply
 
 # Keyboard
