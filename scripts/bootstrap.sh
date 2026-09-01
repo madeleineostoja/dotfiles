@@ -31,20 +31,21 @@ NIX_PROFILE_SCRIPT="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 source "$NIX_PROFILE_SCRIPT"
 
 backup_extension="home-manager-backup-$(date +%Y%m%d%H%M%S)"
-nix run --no-write-lock-file "$REPO_DIR#home-manager" -- switch --flake "$REPO_DIR" -b "$backup_extension"
+nix run --no-update-lock-file "$REPO_DIR#home-manager" -- \
+  --no-update-lock-file switch --flake "$REPO_DIR" -b "$backup_extension"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
-if ! mas account >/dev/null 2>&1; then
-  [[ -t 0 ]] || fail "sign in to the Mac App Store, then rerun bootstrap."
-  open -a "App Store"
-  printf 'Sign in to the Mac App Store and purchase any paid Brewfile apps, then press Enter to continue.\n'
-  read -r
-  mas account >/dev/null 2>&1 || fail "Mac App Store sign-in was not detected."
-fi
+[[ -t 0 ]] || fail "bootstrap requires an interactive terminal for Mac App Store sign-in."
+open -a "App Store"
+printf 'Sign in with the Apple ID that owns the paid Brewfile apps, then press Enter to continue.\n'
+read -r
 
 "$REPO_DIR/scripts/appsync.sh" || \
   fail "application sync failed; confirm the Brewfile apps are available to this App Store account."
-mise install
+(
+  cd "$HOME"
+  mise install
+)
 "$REPO_DIR/scripts/defaults.sh"
 
 git -C "$REPO_DIR" config core.hooksPath .githooks

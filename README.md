@@ -91,8 +91,8 @@ git push
 ### Command boundaries
 
 - `appsync` reconciles the Brewfile's Homebrew and MAS declarations and cleans stale Homebrew artifacts.
-- `nixsync` applies the current locked Home Manager configuration without changing `flake.lock`.
-- `sysupdate` is the complete quarterly updater above.
+- `nixsync` updates the `agents` input in `flake.lock`, then applies the Home Manager configuration.
+- `sysupdate` updates every Nix input as part of the complete quarterly updater above.
 
 To roll back a Home Manager generation without updating inputs:
 

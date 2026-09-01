@@ -23,7 +23,7 @@ printf '▶ Reconciling applications...\n'
 printf '▶ Updating Nix inputs...\n'
 nix flake update --flake "$REPO_DIR"
 printf '▶ Applying Home Manager...\n'
-nix run --no-write-lock-file "$REPO_DIR#home-manager" -- switch --flake "$REPO_DIR"
+home-manager switch --flake "$REPO_DIR"
 
 printf '▶ Installing mise tools...\n'
 (

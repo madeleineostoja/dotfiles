@@ -85,7 +85,7 @@
       gbclean = "git branch --merged main | grep -v '^[* ]*main$' | xargs -r git branch -d";
 
       # Shortcuts
-      nixsync = "nix run --no-write-lock-file ~/dotfiles#home-manager -- switch --flake ~/dotfiles";
+      nixsync = "nix flake update agents --flake \"$HOME/dotfiles\" && home-manager switch --flake \"$HOME/dotfiles\"";
       appsync = "~/dotfiles/scripts/appsync.sh";
       sysupdate = "~/dotfiles/scripts/update.sh";
     };
