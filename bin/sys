@@ -1,0 +1,249 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+REPO_DIR="$HOME/dotfiles"
+BREWFILE="$REPO_DIR/Brewfile"
+
+accent="#c6a0f6"
+muted="#8087a2"
+success="#a6da95"
+warning="#eed49f"
+failure="#ed8796"
+current_step="Starting"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  sys sync [--nix] [--apps]
+  sys update
+  sys help
+
+Commands:
+  sync      Reconcile Nix and applications. Flags select a subset.
+  update    Upgrade and reconcile the complete system.
+
+Sync filters:
+  --nix     Update the agents input and apply Home Manager.
+  --apps    Reconcile Homebrew and Mac App Store applications.
+
+With no filters, `sys sync` runs both scopes.
+EOF
+}
+
+usage_error() {
+  printf 'Error: %s\n\n' "$1" >&2
+  usage >&2
+  exit 2
+}
+
+on_error() {
+  status=$?
+  trap - ERR
+  printf '\n'
+  gum style \
+    --bold \
+    --foreground "$failure" \
+    --border rounded \
+    --border-foreground "$failure" \
+    --padding "0 2" \
+    "✗ System operation failed" \
+    "$current_step"
+  exit "$status"
+}
+
+trap on_error ERR
+
+require_repo() {
+  [[ -d "$REPO_DIR/.git" ]] || usage_error "expected dotfiles repository at $REPO_DIR"
+}
+
+banner() {
+  gum style \
+    --bold \
+    --foreground "$accent" \
+    --border rounded \
+    --border-foreground "$accent" \
+    --padding "0 2" \
+    "$1" \
+    "$(date '+%A, %d %B %Y at %H:%M')"
+}
+
+section() {
+  printf '\n'
+  gum style --bold --foreground "$accent" "$1"
+}
+
+step() {
+  current_step="$1"
+  gum style --foreground "$muted" "  → $current_step"
+}
+
+quiet_step() {
+  current_step="$1"
+  shift
+
+  if ! gum spin \
+    --spinner dot \
+    --spinner.foreground "$accent" \
+    --title "$current_step" \
+    --title.foreground "$muted" \
+    --show-error \
+    -- "$@"; then
+    return 1
+  fi
+
+  gum style --foreground "$success" "  ✓ $current_step"
+}
+
+finish() {
+  duration=$(($(date +%s) - start_time))
+  printf '\n'
+  gum style \
+    --bold \
+    --foreground "$success" \
+    --border rounded \
+    --border-foreground "$success" \
+    --padding "0 2" \
+    "✓ $1 complete in ${duration}s"
+}
+
+reconcile_apps() {
+  step "Reconciling Brewfile"
+  brew bundle install --quiet --force-cleanup --force --zap --file="$BREWFILE"
+  step "Cleaning Homebrew artifacts"
+  brew cleanup --quiet --prune=all
+}
+
+apply_home_manager() {
+  quiet_step "Applying Home Manager" home-manager switch --flake "$REPO_DIR"
+}
+
+sync_nix() {
+  quiet_step "Updating agents input" nix flake update agents --flake "$REPO_DIR"
+  apply_home_manager
+}
+
+sync_apps() {
+  section "Applications"
+  reconcile_apps
+}
+
+run_sync() {
+  include_nix=false
+  include_apps=false
+
+  if (($# == 0)); then
+    include_nix=true
+    include_apps=true
+  fi
+
+  while (($# > 0)); do
+    case "$1" in
+      --nix)
+        include_nix=true
+        ;;
+      --apps)
+        include_apps=true
+        ;;
+      -h|--help)
+        usage
+        return
+        ;;
+      *)
+        usage_error "unknown sync option: $1"
+        ;;
+    esac
+    shift
+  done
+
+  require_repo
+  start_time=$(date +%s)
+  banner "System sync"
+
+  if [[ "$include_apps" == true ]]; then
+    sync_apps
+  fi
+
+  if [[ "$include_nix" == true ]]; then
+    section "Nix"
+    sync_nix
+  fi
+
+  finish "System sync"
+  if [[ "$include_nix" == true ]]; then
+    printf '\n'
+    gum style --bold "Review dependency changes"
+    gum style --foreground "$muted" "  cd ~/dotfiles && git diff flake.lock"
+  fi
+}
+
+run_update() {
+  if (($# > 0)); then
+    case "$1" in
+      -h|--help)
+        usage
+        return
+        ;;
+      *)
+        usage_error "update does not accept options"
+        ;;
+    esac
+  fi
+
+  require_repo
+  start_time=$(date +%s)
+  banner "System update"
+
+  section "Applications"
+  step "Updating Homebrew metadata"
+  brew update --quiet
+  step "Upgrading Homebrew packages"
+  brew upgrade --quiet --yes
+  step "Upgrading Mac App Store apps"
+  mas upgrade
+  reconcile_apps
+
+  section "Nix"
+  quiet_step "Updating flake inputs" nix flake update --flake "$REPO_DIR"
+  apply_home_manager
+
+  section "Toolchains"
+  step "Installing configured mise tools"
+  (
+    cd "$HOME"
+    mise install
+  )
+  step "Upgrading mise tools"
+  (
+    cd "$HOME"
+    mise upgrade
+  )
+
+  section "Maintenance"
+  if ! quiet_step "Optimising the Nix store" nix store optimise; then
+    gum style --foreground "$warning" "  ! Nix store optimisation failed; continuing" >&2
+  fi
+
+  finish "System update"
+  printf '\n'
+  gum style --bold "Review and commit"
+  gum style --foreground "$muted" "  cd ~/dotfiles && git diff flake.lock"
+  gum style --foreground "$muted" "  Roll back with: home-manager switch --rollback"
+}
+
+case "${1:-}" in
+  sync)
+    shift
+    run_sync "$@"
+    ;;
+  update)
+    shift
+    run_update "$@"
+    ;;
+  help|-h|--help|"")
+    usage
+    ;;
+  *)
+    usage_error "unknown command: $1"
+    ;;
+esac

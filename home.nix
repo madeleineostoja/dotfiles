@@ -10,6 +10,13 @@ let
   homeDirectory = "/Users/${user}";
   dotfiles = "${homeDirectory}/dotfiles";
   mkLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+  sysCommand = pkgs.writeShellApplication {
+    name = "sys";
+    runtimeInputs = [ pkgs.gum ];
+    text = ''
+      exec "$HOME/dotfiles/bin/sys" "$@"
+    '';
+  };
 in
 {
   home.username = user;
@@ -45,6 +52,7 @@ in
     fd
     dust
     gh
+    sysCommand
     fresh-editor
     supabase-cli # TODO: Remove
   ];

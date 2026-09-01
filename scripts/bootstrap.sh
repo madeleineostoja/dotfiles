@@ -40,7 +40,7 @@ open -a "App Store"
 printf 'Sign in with the Apple ID that owns the paid Brewfile apps, then press Enter to continue.\n'
 read -r
 
-"$REPO_DIR/scripts/appsync.sh" || \
+"$HOME/.nix-profile/bin/sys" sync --apps || \
   fail "application sync failed; confirm the Brewfile apps are available to this App Store account."
 (
   cd "$HOME"
