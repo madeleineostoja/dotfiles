@@ -1,63 +1,45 @@
 #!/usr/bin/env bash
-set -uo pipefail
+set -euo pipefail
 
 REPO_DIR="${HOME}/dotfiles"
 
+[[ -d "$REPO_DIR/.git" ]] || {
+  printf 'Error: expected dotfiles repository at %s\n' "$REPO_DIR" >&2
+  exit 1
+}
+
 start_time=$(date +%s)
-echo "🔄 System update — $(date '+%Y-%m-%d %H:%M:%S')"
-echo
+printf 'System update — %s\n\n' "$(date '+%Y-%m-%d %H:%M:%S')"
 
-# --- Homebrew ---
-echo "▶ brew update..."
-brew update || { echo "❌ brew update failed"; exit 1; }
+printf '▶ Updating Homebrew metadata...\n'
+brew update
+printf '▶ Upgrading Homebrew packages...\n'
+brew upgrade --yes
+printf '▶ Upgrading Mac App Store apps...\n'
+mas upgrade
+printf '▶ Reconciling applications...\n'
+"$REPO_DIR/scripts/appsync.sh"
 
-echo
-echo "▶ Outdated:"
-brew outdated || true
+printf '▶ Updating Nix inputs...\n'
+nix flake update --flake "$REPO_DIR"
+printf '▶ Applying Home Manager...\n'
+nix run --no-write-lock-file "$REPO_DIR#home-manager" -- switch --flake "$REPO_DIR"
 
-echo
-echo "▶ brew upgrade..."
-brew upgrade --yes || echo "⚠️  some brew upgrades failed (continuing)"
+printf '▶ Installing mise tools...\n'
+(
+  cd "$HOME"
+  mise install
+)
+printf '▶ Upgrading mise tools...\n'
+(
+  cd "$HOME"
+  mise upgrade
+)
 
-echo
-echo "▶ Reconciling Brewfile..."
-brew bundle install --force-cleanup --force --zap --file="${REPO_DIR}/Brewfile" \
-  || echo "⚠️  Brewfile reconcile had issues"
-
-echo
-echo "▶ brew cleanup..."
-brew cleanup --prune=all
-
-# --- Nix ---
-if command -v nix >/dev/null 2>&1; then
-  echo
-  echo "▶ nix flake update..."
-  nix flake update --flake "$REPO_DIR" \
-    || { echo "❌ nix flake update failed"; exit 1; }
-
-  echo
-  echo "▶ home-manager switch..."
-  home-manager switch --flake "$REPO_DIR" \
-    || { echo "❌ home-manager switch failed — try 'home-manager switch --rollback'"; exit 1; }
-
-  # GC happens via launch agent; not duplicated here
-fi
-
-# --- mise-managed tools ---
-if command -v mise >/dev/null 2>&1; then
-  echo
-  echo "▶ mise upgrade..."
-  (
-    cd "$HOME"
-    mise upgrade
-  ) || echo "⚠️  mise upgrade had issues"
-fi
+printf '▶ Optimising the Nix store...\n'
+nix store optimise || printf 'Warning: Nix store optimisation failed; continuing.\n' >&2
 
 end_time=$(date +%s)
-duration=$((end_time - start_time))
-echo
-echo "✅ Done in ${duration}s."
-echo
-echo "Review and commit:"
-echo "  cd ~/dotfiles && git diff flake.nix flake.lock"
-echo "If anything broke: home-manager switch --rollback"
+printf '\nDone in %ss.\n\n' "$((end_time - start_time))"
+printf 'Review and commit:\n  cd ~/dotfiles && git diff flake.nix flake.lock\n'
+printf "If anything broke: home-manager switch --rollback\n"

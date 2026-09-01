@@ -49,6 +49,11 @@
       };
     in
     {
+      apps.${system}.home-manager = {
+        type = "app";
+        program = "${home-manager.packages.${system}.default}/bin/home-manager";
+      };
+
       homeConfigurations.mads = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [

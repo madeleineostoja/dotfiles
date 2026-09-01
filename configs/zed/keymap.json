@@ -18,25 +18,25 @@
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-shift-g": "git_panel::ToggleFocus",
-    },
+      "cmd-shift-g": "git_panel::ToggleFocus"
+    }
   },
   {
     "context": "Workspace",
     "unbind": {
-      "ctrl-shift-g": "git_panel::ToggleFocus",
-    },
+      "ctrl-shift-g": "git_panel::ToggleFocus"
+    }
   },
   {
     "context": "Pane",
     "bindings": {
-      "ctrl-shift-g": "search::SelectPreviousMatch",
-    },
+      "ctrl-shift-g": "search::SelectPreviousMatch"
+    }
   },
   {
     "context": "Pane",
     "unbind": {
-      "cmd-shift-g": "search::SelectPreviousMatch",
-    },
+      "cmd-shift-g": "search::SelectPreviousMatch"
+    }
   }
 ]
