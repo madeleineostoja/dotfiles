@@ -11,7 +11,7 @@ shell_files=()
 while IFS= read -r file; do
   bash -n "$file"
   shell_files+=("$file")
-done < <(fd -H -t f -e sh scripts; printf '%s\n' .githooks/pre-commit)
+done < <(fd -H -t f -e sh scripts; printf '%s\n' bin/sys .githooks/pre-commit)
 nix shell "nixpkgs#shellcheck" -c shellcheck "${shell_files[@]}"
 
 while IFS= read -r file; do

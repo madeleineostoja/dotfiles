@@ -67,7 +67,7 @@ Home Manager manages a `home-manager-auto-expire` launch agent. It expires Home 
 ### Quarterly
 
 ```bash
-sysupdate
+sys update
 ```
 
 This runs the complete updater:
@@ -90,9 +90,10 @@ git push
 
 ### Command boundaries
 
-- `appsync` reconciles the Brewfile's Homebrew and MAS declarations and cleans stale Homebrew artifacts.
-- `nixsync` updates the `agents` input in `flake.lock`, then applies the Home Manager configuration.
-- `sysupdate` updates every Nix input as part of the complete quarterly updater above.
+- `sys sync` reconciles applications, updates the `agents` input in `flake.lock`, and applies the Home Manager configuration.
+- `sys sync --apps` reconciles only the Brewfile's Homebrew and MAS declarations.
+- `sys sync --nix` updates only the `agents` input and applies Home Manager.
+- `sys update` updates every Nix input as part of the complete quarterly updater above.
 
 To roll back a Home Manager generation without updating inputs:
 
@@ -102,13 +103,13 @@ home-manager switch --rollback
 
 ## Common operations
 
-**Add a native CLI tool:** add it to `home.packages` in `home.nix`, or use its Home Manager module in `modules/shell.nix`, then run `nixsync`.
+**Add a native CLI tool:** add it to `home.packages` in `home.nix`, or use its Home Manager module in `modules/shell.nix`, then run `sys sync --nix`.
 
-**Add a global language runtime or personal ecosystem CLI:** edit `programs.mise.globalConfig` in `modules/shell.nix`, then run `nixsync`.
+**Add a global language runtime or personal ecosystem CLI:** edit `programs.mise.globalConfig` in `modules/shell.nix`, then run `sys sync --nix`.
 
-**Add a GUI or App Store app:** add a `cask` or `mas` entry to `Brewfile`, then run `appsync`.
+**Add a GUI or App Store app:** add a `cask` or `mas` entry to `Brewfile`, then run `sys sync --apps`.
 
-**Add a configuration file:** create it under `configs/`, add an out-of-store link in `home.nix`, then run `nixsync`. Changes to out-of-store linked files are live immediately, but Home Manager rollback cannot roll those edits back.
+**Add a configuration file:** create it under `configs/`, add an out-of-store link in `home.nix`, then run `sys sync --nix`. Changes to out-of-store linked files are live immediately, but Home Manager rollback cannot roll those edits back.
 
 **Try a tool ephemerally:**
 
