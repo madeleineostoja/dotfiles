@@ -39,7 +39,7 @@ MAS application IDs live in `Brewfile`. To discover an ID for a new app, use `ma
 
 ### Safari extensions
 
-Open Safari → Settings → Extensions and manually enable Wipr 2, Sink It for Reddit, SponsorBlock, UnTrap, and Noir. Grant any per-extension website permissions there; installation alone does not activate an extension.
+Open Safari → Settings → Extensions and manually enable Wipr 2, Sink It for Reddit, and Noir. Grant any per-extension website permissions there; installation alone does not activate an extension.
 
 ### Privacy, trust, and GUI permissions
 
