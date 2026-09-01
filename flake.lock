@@ -3,11 +3,11 @@
     "agents": {
       "flake": false,
       "locked": {
-        "lastModified": 1785802908,
-        "narHash": "sha256-5vOn8xabZPeB038/Cpd3iR0GyiimphjcHCUwiOOBc8o=",
+        "lastModified": 1788242577,
+        "narHash": "sha256-LGXdpmbh9/6H3kqI79hB684N4dL8t3WkZ16mwV44VM4=",
         "owner": "madeleineostoja",
         "repo": "agents",
-        "rev": "2546a5170a8a816e6e03a6d5318e704d21442e18",
+        "rev": "5fd25ef090cb840d18d03cbbea56696de1bedd44",
         "type": "github"
       },
       "original": {
