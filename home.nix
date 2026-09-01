@@ -53,14 +53,12 @@ in
     dust
     gh
     sysCommand
-    fresh-editor
     supabase-cli # TODO: Remove
   ];
 
   # Config files
   home.file = {
     ".config/otty".source = mkLink "configs/otty";
-    ".config/fresh".source = mkLink "configs/fresh";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
     ".config/zed/settings.json".source = mkLink "configs/zed/settings.json";
     ".config/zed/keymap.json".source = mkLink "configs/zed/keymap.json";

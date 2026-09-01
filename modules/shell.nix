@@ -1,11 +1,15 @@
 { lib, pkgs, ... }:
 
+let
+  freshTheme = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/sininspira2/fresh-catppuccin-themes/1294c7556843b079707ff39bac014c8f855c42a6/catppuccin-macchiato.json";
+    hash = "sha256-GcmGdW7PX5L1r5Fci87NPsndRmwDkbIl1H9DBp+w+tM=";
+  };
+in
 {
   home.packages = [ pkgs.worktrunk ];
 
   home.sessionVariables = {
-    EDITOR = "fresh";
-    VISUAL = "fresh";
     GH_COLOR_LABELS = "1";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     RG_COLORS = lib.concatStringsSep ":" [
@@ -18,6 +22,85 @@
   };
 
   catppuccin.zsh-syntax-highlighting.enable = false;
+
+  programs.fresh-editor = {
+    enable = true;
+    defaultEditor = true;
+    settings = {
+      version = 1;
+      theme = "catppuccin-macchiato.json";
+      keybindings =
+        let
+          bind = key: modifiers: action: when: {
+            inherit
+              key
+              modifiers
+              action
+              when
+              ;
+          };
+        in
+        [
+          (bind "s" [ "super" ] "save" "normal")
+          (bind "z" [ "super" ] "undo" "normal")
+          (bind "z" [
+            "super"
+            "shift"
+          ] "redo" "normal")
+          (bind "Left" [
+            "super"
+            "shift"
+          ] "select_line_start" "normal")
+          (bind "Right" [
+            "super"
+            "shift"
+          ] "select_line_end" "normal")
+          (bind "Up" [
+            "super"
+            "shift"
+          ] "select_document_start" "normal")
+          (bind "Down" [
+            "super"
+            "shift"
+          ] "select_document_end" "normal")
+          (bind "o" [ "ctrl" ] "quick_open_files" "global")
+          (bind "o" [
+            "ctrl"
+            "alt"
+          ] "open" "normal")
+          (bind ";" [ "ctrl" ] "quick_open_buffers" "global")
+          (bind "b" [ "alt" ] "move_word_left" "global")
+          (bind "f" [ "alt" ] "move_word_end" "global")
+          (bind "Left" [ "alt" ] "move_word_left" "global")
+          (bind "Right" [ "alt" ] "move_word_end" "global")
+        ];
+      editor = {
+        line_wrap = false;
+        show_menu_bar = false;
+        menu_bar_mnemonics = false;
+        show_tab_bar = false;
+        show_vertical_scrollbar = false;
+        show_tilde = false;
+        nerd_font_icons = true;
+        cursor_style = "steady_bar";
+        indentation_guide = "all";
+        indentation_guide_glyph = "╎";
+        completion_popup_auto_show = true;
+        diagnostics_inline_text = true;
+        restore_previous_session = false;
+        auto_create_empty_buffer_on_last_buffer_close = false;
+      };
+      file_explorer.auto_open_on_last_buffer_close = false;
+      plugins = {
+        dashboard.enabled = false;
+        devcontainer.enabled = false;
+        git_explorer.enabled = false;
+        "k8s-workspace".enabled = false;
+        orchestrator.enabled = false;
+      };
+    };
+  };
+  xdg.configFile."fresh/themes/catppuccin-macchiato.json".source = freshTheme;
 
   programs.zsh = {
     enable = true;
