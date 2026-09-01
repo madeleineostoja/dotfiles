@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.worktrunk ];
+
   home.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
@@ -15,11 +17,7 @@
     ];
   };
 
-  catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-    zsh-syntax-highlighting.enable = false;
-  };
+  catppuccin.zsh-syntax-highlighting.enable = false;
 
   programs.zsh = {
     enable = true;
@@ -96,6 +94,8 @@
       if [[ -r /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       fi
+
+      eval "$(${lib.getExe pkgs.worktrunk} config shell init zsh)"
 
       setopt AUTO_CD INTERACTIVE_COMMENTS EXTENDED_GLOB NO_BEEP
       zstyle ':completion:*' menu select
@@ -212,12 +212,6 @@
 
   programs.lazygit = {
     enable = true;
-    package = null;
-    enableZshIntegration = true;
-  };
-
-  programs.worktrunk = {
-    enable = true;
     enableZshIntegration = true;
   };
 
@@ -231,7 +225,6 @@
         python = "latest";
         "npm:sentry" = "latest";
         "npm:@earendil-works/pi-coding-agent" = "latest";
-        "npm:@schpet/linear-cli" = "latest";
       };
     };
   };

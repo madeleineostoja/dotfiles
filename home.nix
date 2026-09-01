@@ -3,7 +3,6 @@
   pkgs,
   homeDirectory,
   agents,
-  catppuccin-godot,
   ...
 }:
 
@@ -14,7 +13,7 @@ in
 {
   home.username = baseNameOf homeDirectory;
   home.homeDirectory = homeDirectory;
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.11";
 
   programs.home-manager.enable = true;
 
@@ -36,45 +35,32 @@ in
   imports = [
     ./modules/git.nix
     ./modules/shell.nix
+    ./modules/ssh.nix
   ];
 
   # Packages
   home.packages = with pkgs; [
-    # Shell
-    starship
-
     # CLI tools
-    bat
     ripgrep
     fd
-    fzf
     dust
 
     # Git
-    lazygit
+    gh
 
     # Dev
     nixfmt
-    shellcheck
-    mas
-    # Keep until its remaining workflow is owned by the relevant repository.
-    supabase-cli
     fresh-editor
+    mas
+    supabase-cli
   ];
 
   # Config files
   home.file = {
-    ".ssh/config".source = mkLink "configs/ssh";
     ".hammerspoon/init.lua".source = mkLink "configs/hammerspoon.lua";
     ".config/worktrunk/config.toml".source = mkLink "configs/worktrunk.toml";
     ".config/otty".source = mkLink "configs/otty";
     ".config/fresh".source = mkLink "configs/fresh";
-
-    # Godot
-    "Library/Application Support/Godot/editor_settings-4.7.tres".source =
-      mkLink "configs/godot/settings.tres";
-    "Library/Application Support/Godot/text_editor_themes/Catppuccin-Macchiato.tet".source =
-      "${catppuccin-godot}/themes/Catppuccin Macchiato.tet";
 
     # Pi
     ".pi/agent" = {
