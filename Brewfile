@@ -1,8 +1,6 @@
 # Mac App Store apps
 mas "Wipr 2", id: 1662217862
 mas "Sink It for Reddit", id: 6449873635
-mas "SponsorBlock", id: 1573461917
-mas "UnTrap for YouTube", id: 1637438059
 mas "Noir", id: 1592917505
 mas "Adobe Lightroom", id: 1451544217
 
