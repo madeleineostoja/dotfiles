@@ -7,10 +7,12 @@ cd "$REPO_DIR"
 nixfmt --check flake.nix home.nix modules/*.nix
 nix eval --no-write-lock-file .#homeConfigurations.mads.activationPackage.drvPath >/dev/null
 
+shell_files=()
 while IFS= read -r file; do
   bash -n "$file"
-  shellcheck "$file"
+  shell_files+=("$file")
 done < <(fd -H -t f -e sh scripts; printf '%s\n' .githooks/pre-commit)
+nix shell "nixpkgs#shellcheck" -c shellcheck "${shell_files[@]}"
 
 while IFS= read -r file; do
   jq empty "$file"

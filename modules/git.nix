@@ -1,7 +1,14 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
-  programs.gh.enable = true;
+  home.packages = [ pkgs.hunk ];
+
+  xdg.configFile."hunk/config.toml".text = ''
+    theme = "catppuccin-macchiato"
+    mode = "split"
+    agent_notes = true
+  '';
+
   programs.git = {
     enable = true;
     ignores = [
@@ -41,16 +48,6 @@
     iniContent.pager = {
       diff = lib.mkForce "hunk pager";
       show = lib.mkForce "hunk pager";
-    };
-  };
-
-  programs.hunk = {
-    enable = true;
-    settings = {
-      theme = "catppuccin-macchiato";
-      mode = "split";
-      agent_notes = true;
-      vcs.watch = true;
     };
   };
 
