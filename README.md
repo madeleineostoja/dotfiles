@@ -1,13 +1,12 @@
 # Dotfiles
 
-Personal Apple Silicon Mac configuration for user `mads`.
+Personal Mac configuration
 
 ## Stack
 
 - **Nix + Home Manager** — CLI tools, shell configuration, user launch agents, and managed links
 - **Homebrew + MAS** — GUI applications, fonts, and Mac App Store applications
 - **mise** — language runtimes and personal ecosystem CLIs
-- **Worktrunk** — personal worktree UX only
 
 ## First-time setup
 
@@ -156,17 +155,3 @@ brew bundle check --file=~/dotfiles/Brewfile
 mas list
 home-manager switch --rollback
 ```
-
-## Forking for work
-
-```bash
-git clone https://github.com/USERNAME/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-git remote add upstream https://github.com/madeleineostoja/dotfiles.git
-
-git fetch upstream
-git merge upstream/main
-git push
-```
-
-Adapt the personal identity, Home Manager username/home directory, Git identity, and any work-specific applications before applying a fork.
