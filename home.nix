@@ -40,7 +40,9 @@ in
 
   # Modules
   imports = [
+    ./modules/editor.nix
     ./modules/git.nix
+    ./modules/mise.nix
     ./modules/shell.nix
     ./modules/ssh.nix
   ];

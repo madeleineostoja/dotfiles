@@ -1,12 +1,19 @@
 { lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.hunk ];
+  home.packages = with pkgs; [
+    hunk
+    worktrunk
+  ];
 
   xdg.configFile."hunk/config.toml".text = ''
     theme = "catppuccin-macchiato"
     mode = "split"
     agent_notes = true
+  '';
+
+  programs.zsh.initContent = lib.mkBefore ''
+    eval "$(${lib.getExe pkgs.worktrunk} config shell init zsh)"
   '';
 
   programs.git = {
@@ -59,5 +66,10 @@
       side-by-side = true;
       line-numbers = true;
     };
+  };
+
+  programs.lazygit = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

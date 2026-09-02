@@ -111,9 +111,9 @@ home-manager switch --rollback
 
 ## Common operations
 
-**Add a native CLI tool:** add it to `home.packages` in `home.nix`, or use its Home Manager module in `modules/shell.nix`, then run `sys sync --nix`.
+**Add a native CLI tool:** add it to `home.packages` in `home.nix`, or use its Home Manager module in the relevant file under `modules/`, then run `sys sync --nix`.
 
-**Add a global language runtime or personal ecosystem CLI:** edit `programs.mise.globalConfig` in `modules/shell.nix`, then run `sys sync --nix`.
+**Add a global language runtime or personal ecosystem CLI:** edit `programs.mise.globalConfig` in `modules/mise.nix`, then run `sys sync --nix`.
 
 **Add a GUI or App Store app:** add a `cask` or `mas` entry to `Brewfile`, then run `sys sync --apps`.
 

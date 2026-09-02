@@ -1,8 +1,6 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 {
-  home.packages = [ pkgs.worktrunk ];
-
   home.sessionVariables = {
     GH_COLOR_LABELS = "1";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
@@ -16,87 +14,6 @@
   };
 
   catppuccin.zsh-syntax-highlighting.enable = false;
-
-  programs.fresh-editor = {
-    enable = true;
-    defaultEditor = true;
-    settings = {
-      version = 1;
-      theme = "theme.json";
-      check_for_updates = false;
-      self_update = false;
-      keybindings =
-        let
-          bind = key: modifiers: action: when: {
-            inherit
-              key
-              modifiers
-              action
-              when
-              ;
-          };
-        in
-        [
-          (bind "s" [ "super" ] "save" "normal")
-          (bind "z" [ "super" ] "undo" "normal")
-          (bind "z" [
-            "super"
-            "shift"
-          ] "redo" "normal")
-          (bind "Left" [
-            "super"
-            "shift"
-          ] "select_line_start" "normal")
-          (bind "Right" [
-            "super"
-            "shift"
-          ] "select_line_end" "normal")
-          (bind "Up" [
-            "super"
-            "shift"
-          ] "select_document_start" "normal")
-          (bind "Down" [
-            "super"
-            "shift"
-          ] "select_document_end" "normal")
-          (bind "o" [ "ctrl" ] "quick_open_files" "global")
-          (bind "o" [
-            "ctrl"
-            "alt"
-          ] "open" "normal")
-          (bind ";" [ "ctrl" ] "quick_open_buffers" "global")
-          (bind "b" [ "alt" ] "move_word_left" "global")
-          (bind "f" [ "alt" ] "move_word_end" "global")
-          (bind "Left" [ "alt" ] "move_word_left" "global")
-          (bind "Right" [ "alt" ] "move_word_end" "global")
-        ];
-      editor = {
-        line_wrap = false;
-        show_menu_bar = false;
-        menu_bar_mnemonics = false;
-        show_tab_bar = false;
-        show_vertical_scrollbar = false;
-        show_tilde = false;
-        nerd_font_icons = true;
-        cursor_style = "steady_bar";
-        indentation_guide = "all";
-        indentation_guide_glyph = "╎";
-        completion_popup_auto_show = true;
-        diagnostics_inline_text = true;
-        restore_previous_session = false;
-        auto_create_empty_buffer_on_last_buffer_close = false;
-      };
-      file_explorer.auto_open_on_last_buffer_close = false;
-      plugins = {
-        dashboard.enabled = false;
-        devcontainer.enabled = false;
-        git_explorer.enabled = false;
-        "k8s-workspace".enabled = false;
-        orchestrator.enabled = false;
-      };
-    };
-  };
-  xdg.configFile."fresh/themes/theme.json".source = ../configs/fresh/theme.json;
 
   programs.zsh = {
     enable = true;
@@ -134,7 +51,6 @@
       fr = "fresh";
       rmf = "rm -rf";
       pn = "pnpm";
-      z = "zed";
       piup = "pi update && pi update --extensions";
 
       # Git
@@ -159,8 +75,6 @@
       if [[ -r /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       fi
-
-      eval "$(${lib.getExe pkgs.worktrunk} config shell init zsh)"
 
       setopt AUTO_CD INTERACTIVE_COMMENTS EXTENDED_GLOB NO_BEEP
       zstyle ':completion:*' menu select
@@ -212,22 +126,4 @@
     enableZshIntegration = true;
   };
 
-  programs.lazygit = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.mise = {
-    enable = true;
-    enableZshIntegration = true;
-    globalConfig = {
-      tools = {
-        node = "26";
-        pnpm = "11";
-        python = "latest";
-        "npm:sentry" = "latest";
-        "npm:@earendil-works/pi-coding-agent" = "latest";
-      };
-    };
-  };
 }
