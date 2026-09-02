@@ -1,11 +1,5 @@
 { lib, pkgs, ... }:
 
-let
-  freshTheme = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/sininspira2/fresh-catppuccin-themes/1294c7556843b079707ff39bac014c8f855c42a6/catppuccin-macchiato.json";
-    hash = "sha256-GcmGdW7PX5L1r5Fci87NPsndRmwDkbIl1H9DBp+w+tM=";
-  };
-in
 {
   home.packages = [ pkgs.worktrunk ];
 
@@ -28,10 +22,9 @@ in
     defaultEditor = true;
     settings = {
       version = 1;
-      theme = "catppuccin-macchiato.json";
+      theme = "theme.json";
       check_for_updates = false;
       self_update = false;
-      active_keybinding_map = "macos";
       keybindings =
         let
           bind = key: modifiers: action: when: {
@@ -78,36 +71,22 @@ in
           (bind "Right" [ "alt" ] "move_word_end" "global")
         ];
       editor = {
-        animations = false;
-        cursor_jump_animation = false;
-        line_numbers = true;
-        relative_line_numbers = false;
-        highlight_current_line = true;
         line_wrap = false;
         show_menu_bar = false;
         menu_bar_mnemonics = false;
         show_tab_bar = false;
-        show_status_bar = true;
-        show_prompt_line = false;
         show_vertical_scrollbar = false;
-        show_horizontal_scrollbar = false;
         show_tilde = false;
         nerd_font_icons = true;
         cursor_style = "steady_bar";
         indentation_guide = "all";
         indentation_guide_glyph = "╎";
         completion_popup_auto_show = true;
-        quick_suggestions = true;
         diagnostics_inline_text = true;
-        mouse_hover_enabled = true;
-        auto_save_enabled = false;
         restore_previous_session = false;
         auto_create_empty_buffer_on_last_buffer_close = false;
       };
-      file_explorer = {
-        auto_open_on_last_buffer_close = false;
-        follow_active_buffer = false;
-      };
+      file_explorer.auto_open_on_last_buffer_close = false;
       plugins = {
         dashboard.enabled = false;
         devcontainer.enabled = false;
@@ -117,7 +96,7 @@ in
       };
     };
   };
-  xdg.configFile."fresh/themes/catppuccin-macchiato.json".source = freshTheme;
+  xdg.configFile."fresh/themes/theme.json".source = ../configs/fresh/theme.json;
 
   programs.zsh = {
     enable = true;

@@ -1,8 +1,2 @@
 configs/otty/
 !configs/otty/config.toml
-
-configs/fresh/*
-!configs/fresh/config.json
-!configs/fresh/themes/
-configs/fresh/themes/*
-!configs/fresh/themes/macchiato.json
