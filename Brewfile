@@ -12,7 +12,6 @@ cask "font-monaspice-nerd-font"
 cask "helium-browser"
 cask "notion"
 cask "iina"
-cask "steam"
 cask "affinity"
 cask "chatgpt"
 
