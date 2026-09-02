@@ -195,8 +195,7 @@ run_update() {
   banner "System update"
 
   section "Applications"
-  step "Updating Homebrew metadata"
-  brew update --quiet
+  quiet_step "Updating Homebrew metadata" brew update --quiet
   step "Upgrading Homebrew packages"
   brew upgrade --quiet --yes
   step "Upgrading Mac App Store apps"
@@ -208,15 +207,13 @@ run_update() {
   apply_home_manager
 
   section "Toolchains"
-  step "Installing configured mise tools"
   (
     cd "$HOME"
-    mise install
+    quiet_step "Installing configured mise tools" mise install
   )
-  step "Upgrading mise tools"
   (
     cd "$HOME"
-    mise upgrade
+    quiet_step "Upgrading mise tools" mise upgrade
   )
 
   finish "System update"
@@ -244,8 +241,7 @@ run_cleanup() {
   banner "System cleanup"
 
   section "Applications"
-  step "Cleaning Homebrew artifacts"
-  brew cleanup --quiet --prune=all
+  quiet_step "Cleaning Homebrew artifacts" brew cleanup --quiet --prune=all
 
   section "Nix"
   if ! quiet_step "Optimising the Nix store" nix store optimise; then
