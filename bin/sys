@@ -170,11 +170,6 @@ run_sync() {
   fi
 
   finish "System sync"
-  if [[ "$include_nix" == true ]]; then
-    printf '\n'
-    gum style --bold "Review dependency changes"
-    gum style --foreground "$muted" "  cd ~/dotfiles && git diff flake.lock"
-  fi
 }
 
 run_update() {
@@ -218,8 +213,6 @@ run_update() {
 
   finish "System update"
   printf '\n'
-  gum style --bold "Review and commit"
-  gum style --foreground "$muted" "  cd ~/dotfiles && git diff flake.lock"
   gum style --foreground "$muted" "  Roll back with: home-manager switch --rollback"
 }
 

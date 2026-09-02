@@ -30,6 +30,7 @@ NIX_PROFILE_SCRIPT="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 [[ -r "$NIX_PROFILE_SCRIPT" ]] || fail "Nix installation did not provide $NIX_PROFILE_SCRIPT."
 source "$NIX_PROFILE_SCRIPT"
 
+nix flake update --flake "$REPO_DIR"
 backup_extension="home-manager-backup-$(date +%Y%m%d%H%M%S)"
 nix run --no-update-lock-file "$REPO_DIR#home-manager" -- \
   --no-update-lock-file switch --flake "$REPO_DIR" -b "$backup_extension"

@@ -77,14 +77,7 @@ This runs the complete updater:
 4. `mise install`
 5. `mise upgrade`
 
-Review and commit dependency updates afterward:
-
-```bash
-cd ~/dotfiles
-git diff flake.lock
-git commit -am "chore: quarterly update"
-git push
-```
+`flake.lock` is local and ignored. Bootstrap creates it with current inputs, ordinary rebuilds retain those local pins, and `sys update` advances them without creating repository changes.
 
 ### On demand
 
