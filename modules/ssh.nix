@@ -2,7 +2,6 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    # OrbStack's generated host must be included before any Host blocks.
     includes = [ "~/.orbstack/ssh/config" ];
     settings = {
       "github.com" = {

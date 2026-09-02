@@ -59,9 +59,9 @@
       gs = "git status";
       ga = "git add";
       gc = "git commit -m";
+      gaac = "git add -A && git commit -m";
       glog = "git log --graph";
       gpull = "git pull";
-      grpull = "git fetch && git rebase";
       gpush = "git push";
       gpushf = "git push --force-with-lease --force-if-includes";
       grecommit = "git commit --amend -C HEAD";

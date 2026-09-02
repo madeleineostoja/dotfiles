@@ -27,7 +27,6 @@
       "*.swp"
       "*.swo"
       "*~"
-      ".pi/implement"
     ];
     settings = {
       user = {
