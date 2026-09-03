@@ -7,7 +7,6 @@
         node = "26";
         pnpm = "12";
         python = "latest";
-        "npm:sentry" = "latest";
         "npm:@earendil-works/pi-coding-agent" = "latest";
       };
     };
