@@ -91,7 +91,7 @@ This removes stale Homebrew artifacts and cache files, then optimises the Nix st
 
 - `sys sync` reconciles applications, updates the `agents` input in `flake.lock`, and applies the Home Manager configuration.
 - `sys sync --apps` reconciles only the Brewfile's Homebrew and MAS declarations.
-- `sys sync --nix` updates only the `agents` input and applies Home Manager.
+- `sys sync --nix` updates the `agents` input, applies Home Manager, and syncs mise tools.
 - `sys update` updates every Nix input as part of the complete quarterly updater above.
 - `sys cleanup` reclaims disk space without updating or reconciling dependencies.
 
