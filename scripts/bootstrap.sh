@@ -32,8 +32,8 @@ source "$NIX_PROFILE_SCRIPT"
 
 nix flake update --flake "$REPO_DIR"
 backup_extension="home-manager-backup-$(date +%Y%m%d%H%M%S)"
-nix run --no-update-lock-file "$REPO_DIR#home-manager" -- \
-  --no-update-lock-file switch --flake "$REPO_DIR" -b "$backup_extension"
+nix run "$REPO_DIR#home-manager" -- \
+  switch --flake "$REPO_DIR" -b "$backup_extension"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
 [[ -t 0 ]] || fail "bootstrap requires an interactive terminal for Mac App Store sign-in."
