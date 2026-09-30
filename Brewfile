@@ -14,6 +14,7 @@ cask "notion"
 cask "iina"
 cask "affinity"
 cask "chatgpt"
+cask "steam"
 
 # Development
 cask "otty"
