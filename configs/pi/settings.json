@@ -1,11 +1,15 @@
 {
-  "lastChangelogVersion": "0.84.4",
+  "lastChangelogVersion": "0.99.2",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "high",
+  "defaultTools": ["+codemode", "+tool_search"],
+  "codemode": {
+    "mode": "on"
+  },
   "enabledModels": [
-    "openai-codex/gpt-5.6-sol",
-    "openai-codex/gpt-5.6-terra"
+    "openai-codex/gpt-6-astra",
+    "openai-codex/gpt-6.1-sol"
   ],
   "hideThinkingBlock": true,
   "steeringMode": "all",
@@ -24,5 +28,10 @@
     "git:github.com/madeleineostoja/pipkin",
     "npm:pi-catppuccin",
     "npm:@narumitw/pi-usage"
-  ]
+  ],
+  "modelThinkingLevels": {
+    "openai-codex/gpt-6-astra": "medium",
+    "openai-codex/gpt-6.1-sol": "high",
+    "openai-codex/gpt-6-luna": "xhigh"
+  }
 }

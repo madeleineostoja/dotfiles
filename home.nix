@@ -67,6 +67,7 @@ in
 
     # Pi
     ".pi/agent/settings.json".source = mkLink "configs/pi/settings.json";
+    ".pi/agent/mcp.json".source = mkLink "configs/pi/mcp.json";
     ".pi/agent/keybindings.json".source = mkLink "configs/pi/keybindings.json";
     ".pi/agent/pipkin/config.json".source = mkLink "configs/pi/pipkin.json";
     ".pi/agent" = {
