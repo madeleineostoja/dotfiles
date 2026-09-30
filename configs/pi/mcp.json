@@ -1,7 +1,8 @@
 {
   "mcpServers": {
     "context7": {
-      "url": "https://mcp.context7.com/mcp"
+      "url": "https://mcp.context7.com/mcp/oauth",
+      "description": "Search current, version-specific documentation and code examples for libraries, frameworks, SDKs, APIs, CLI tools, and cloud services."
     }
   }
 }
