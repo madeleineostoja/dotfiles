@@ -15,20 +15,21 @@ usage() {
   cat <<'EOF'
 Usage:
   sys sync [--nix] [--apps]
-  sys update
+  sys update [--nix] [--apps]
   sys cleanup
   sys help
 
 Commands:
   sync      Reconcile Nix and applications. Flags select a subset.
-  update    Upgrade and reconcile the complete system.
+  update    Upgrade and reconcile Nix and applications. Flags select a subset.
   cleanup   Reclaim disk space from package stores and caches.
 
-Sync filters:
-  --nix     Update the agents input and apply Home Manager.
-  --apps    Reconcile Homebrew and Mac App Store applications.
+Filters for sync and update:
+  --nix     Apply Home Manager and sync mise tools; update also upgrades both.
+  --apps    Reconcile Homebrew and Mac App Store applications; update also upgrades them.
 
-With no filters, `sys sync` runs both scopes.
+Sync advances only the agents input; update advances all Nix inputs.
+With no filters, both commands run both scopes.
 EOF
 }
 
@@ -114,13 +115,13 @@ reconcile_apps() {
 }
 
 apply_home_manager() {
-  quiet_step "Applying Home Manager" home-manager switch --flake "$REPO_DIR"
+  quiet_step "Applying Home Manager" home-manager switch --flake "path:$REPO_DIR"
 }
 
 sync_nix() {
-  quiet_step "Updating agents input" nix flake update agents --flake "$REPO_DIR"
+  quiet_step "Updating agents input" nix flake update agents --flake "path:$REPO_DIR"
   apply_home_manager
-  quiet_step "Syncing mise tools" bash -c "mise install -C \"\$HOME\" && mise prune -C \"\$HOME\""
+  quiet_step "Syncing mise tools" bash -c "mise install -C \"\$HOME\" && mise prune --yes -C \"\$HOME\""
 }
 
 sync_apps() {
@@ -128,7 +129,10 @@ sync_apps() {
   reconcile_apps
 }
 
-run_sync() {
+parse_filters() {
+  local command="$1"
+  shift
+
   include_nix=false
   include_apps=false
 
@@ -147,15 +151,18 @@ run_sync() {
         ;;
       -h|--help)
         usage
-        return
+        exit 0
         ;;
       *)
-        usage_error "unknown sync option: $1"
+        usage_error "unknown $command option: $1"
         ;;
     esac
     shift
   done
+}
 
+run_sync() {
+  parse_filters sync "$@"
   require_repo
   start_time=$(date +%s)
   banner "System sync"
@@ -173,47 +180,42 @@ run_sync() {
 }
 
 run_update() {
-  if (($# > 0)); then
-    case "$1" in
-      -h|--help)
-        usage
-        return
-        ;;
-      *)
-        usage_error "update does not accept options"
-        ;;
-    esac
-  fi
-
+  parse_filters update "$@"
   require_repo
   start_time=$(date +%s)
   banner "System update"
 
-  section "Applications"
-  quiet_step "Updating Homebrew metadata" brew update --quiet
-  step "Upgrading Homebrew packages"
-  brew upgrade --quiet --yes
-  step "Upgrading Mac App Store apps"
-  mas upgrade
-  reconcile_apps
+  if [[ "$include_apps" == true ]]; then
+    section "Applications"
+    quiet_step "Updating Homebrew metadata" brew update --quiet
+    step "Upgrading Homebrew packages"
+    brew upgrade --quiet --yes
+    step "Upgrading Mac App Store apps"
+    mas upgrade
+    reconcile_apps
+  fi
 
-  section "Nix"
-  quiet_step "Updating flake inputs" nix flake update --flake "$REPO_DIR"
-  apply_home_manager
+  if [[ "$include_nix" == true ]]; then
+    section "Nix"
+    quiet_step "Updating flake inputs" nix flake update --flake "path:$REPO_DIR"
+    apply_home_manager
 
-  section "Toolchains"
-  (
-    cd "$HOME"
-    quiet_step "Installing configured mise tools" mise install
-  )
-  (
-    cd "$HOME"
-    quiet_step "Upgrading mise tools" mise upgrade
-  )
+    section "Toolchains"
+    (
+      cd "$HOME"
+      quiet_step "Installing configured mise tools" mise install
+    )
+    (
+      cd "$HOME"
+      quiet_step "Upgrading mise tools" mise upgrade
+    )
+  fi
 
   finish "System update"
-  printf '\n'
-  gum style --foreground "$muted" "  Roll back with: home-manager switch --rollback"
+  if [[ "$include_nix" == true ]]; then
+    printf '\n'
+    gum style --foreground "$muted" "  Roll back with: home-manager switch --rollback"
+  fi
 }
 
 run_cleanup() {

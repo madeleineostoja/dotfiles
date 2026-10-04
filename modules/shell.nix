@@ -51,7 +51,6 @@
       fr = "fresh";
       rmf = "rm -rf";
       pn = "pnpm";
-      piup = "mise upgrade --minimum-release-age 0 'npm:@earendil-works/pi-coding-agent' && pi update --extensions";
 
       # Git
       g = "git";

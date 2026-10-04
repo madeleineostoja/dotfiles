@@ -3,6 +3,7 @@
   pkgs,
   user,
   agents,
+  pi,
   ...
 }:
 
@@ -55,6 +56,7 @@ in
     dust
     gh
     sysCommand
+    pi.packages.${pkgs.stdenv.hostPlatform.system}.default
     supabase-cli # TODO: Remove
   ];
 

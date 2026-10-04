@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# macOS defaults — run once after first-time setup, rerun anytime to reapply
+# macOS defaults — bootstrap only, never reapplied by sys sync or sys update
 
 # Keyboard
 defaults write NSGlobalDomain KeyRepeat -int 2
@@ -15,6 +15,7 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
 
 # Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool false
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"

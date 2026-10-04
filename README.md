@@ -23,6 +23,8 @@ cd ~/dotfiles
 
 Home Manager conflicts are saved with a timestamped `home-manager-backup-*` suffix; review those files before deleting them. Homebrew environment setup is managed in Home Manager's Zsh profile—bootstrap never modifies `~/.zprofile`.
 
+macOS defaults in `scripts/defaults.sh` are applied only during bootstrap, not by Home Manager or `sys sync`/`sys update`. Later preference changes are left alone unless you explicitly rerun bootstrap or the defaults script.
+
 ## Complete after bootstrap
 
 ### Accounts and authentication
@@ -77,7 +79,15 @@ This runs the complete updater:
 4. `mise install`
 5. `mise upgrade`
 
+Use `sys update --nix` for only Nix and mise, or `sys update --apps` for only Homebrew and Mac App Store applications.
+
 `flake.lock` is local and ignored. Bootstrap creates it with current inputs, ordinary rebuilds retain those local pins, and `sys update` advances them without creating repository changes.
+
+### Pi
+
+Pi is installed through Home Manager from its official `github:earendil-works/pi/stable` flake. `sys update --nix` advances it with the other Nix inputs and applies Home Manager; `sys sync --nix` retains Pi's current pin. `pi update` cannot update the Nix-managed executable. Run `pi update --extensions` separately to update installed Pi extensions.
+
+To migrate an existing mise installation, run `sys sync --nix`. This applies the Nix package and prunes the old mise/npm installation. Open a new shell afterward. Configuration, credentials, sessions, and extensions in `~/.pi/agent/` are preserved.
 
 ### On demand
 
@@ -89,10 +99,13 @@ This removes stale Homebrew artifacts and cache files, then optimises the Nix st
 
 ### Command boundaries
 
-- `sys sync` reconciles applications, updates the `agents` input in `flake.lock`, and applies the Home Manager configuration.
+- `sys sync` reconciles applications, updates the `agents` input in `flake.lock`, applies Home Manager, and installs and prunes mise tools.
 - `sys sync --apps` reconciles only the Brewfile's Homebrew and MAS declarations.
-- `sys sync --nix` updates the `agents` input, applies Home Manager, and syncs mise tools.
-- `sys update` updates every Nix input as part of the complete quarterly updater above.
+- `sys sync --nix` updates the `agents` input, applies Home Manager, and installs and prunes mise tools.
+- `sys update` performs the complete quarterly update.
+- `sys update --apps` updates Homebrew, upgrades Homebrew and MAS applications, and reconciles the Brewfile.
+- `sys update --nix` updates every Nix input, applies Home Manager, and installs and upgrades mise tools.
+- Both sync and update accept `--nix --apps` together.
 - `sys cleanup` reclaims disk space without updating or reconciling dependencies.
 
 To roll back a Home Manager generation without updating inputs:
