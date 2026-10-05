@@ -79,15 +79,15 @@ This runs the complete updater:
 4. `mise install`
 5. `mise upgrade`
 
-Use `sys update --nix` for only Nix and mise, or `sys update --apps` for only Homebrew and Mac App Store applications.
+Use `sys update --shell` for only Nix and mise, or `sys update --apps` for only Homebrew and Mac App Store applications.
 
 `flake.lock` is local and ignored. Bootstrap creates it with current inputs, ordinary rebuilds retain those local pins, and `sys update` advances them without creating repository changes.
 
 ### Pi
 
-Pi is installed through Home Manager from its official `github:earendil-works/pi/stable` flake. `sys update --nix` advances it with the other Nix inputs and applies Home Manager; `sys sync --nix` retains Pi's current pin. `pi update` cannot update the Nix-managed executable. Run `pi update --extensions` separately to update installed Pi extensions.
+Pi is installed through mise as `npm:@earendil-works/pi-coding-agent`, using mise-managed Node rather than a Nix-bundled runtime. `sys update --shell` upgrades it with the other mise tools. Run `pi update --extensions` separately to update installed Pi extensions.
 
-To migrate an existing mise installation, run `sys sync --nix`. This applies the Nix package and prunes the old mise/npm installation. Open a new shell afterward. Configuration, credentials, sessions, and extensions in `~/.pi/agent/` are preserved.
+To migrate an existing Nix installation, run `sys sync --shell`. This removes the Home Manager package and installs Pi through mise. Open a new shell afterward. Configuration, credentials, sessions, and extensions in `~/.pi/agent/` are preserved.
 
 ### On demand
 
@@ -101,11 +101,11 @@ This removes stale Homebrew artifacts and cache files, then optimises the Nix st
 
 - `sys sync` reconciles applications, updates the `agents` input in `flake.lock`, applies Home Manager, and installs and prunes mise tools.
 - `sys sync --apps` reconciles only the Brewfile's Homebrew and MAS declarations.
-- `sys sync --nix` updates the `agents` input, applies Home Manager, and installs and prunes mise tools.
+- `sys sync --shell` updates the `agents` input, applies Home Manager, and installs and prunes mise tools.
 - `sys update` performs the complete quarterly update.
 - `sys update --apps` updates Homebrew, upgrades Homebrew and MAS applications, and reconciles the Brewfile.
-- `sys update --nix` updates every Nix input, applies Home Manager, and installs and upgrades mise tools.
-- Both sync and update accept `--nix --apps` together.
+- `sys update --shell` updates every Nix input, applies Home Manager, and installs and upgrades mise tools.
+- Both sync and update accept `--shell --apps` together.
 - `sys cleanup` reclaims disk space without updating or reconciling dependencies.
 
 To roll back a Home Manager generation without updating inputs:
@@ -116,13 +116,13 @@ home-manager switch --rollback
 
 ## Common operations
 
-**Add a native CLI tool:** add it to `home.packages` in `home.nix`, or use its Home Manager module in the relevant file under `modules/`, then run `sys sync --nix`.
+**Add a native CLI tool:** add it to `home.packages` in `home.nix`, or use its Home Manager module in the relevant file under `modules/`, then run `sys sync --shell`.
 
-**Add a global language runtime or personal ecosystem CLI:** edit `programs.mise.globalConfig` in `modules/mise.nix`, then run `sys sync --nix`.
+**Add a global language runtime or personal ecosystem CLI:** edit `programs.mise.globalConfig` in `modules/mise.nix`, then run `sys sync --shell`.
 
 **Add a GUI or App Store app:** add a `cask` or `mas` entry to `Brewfile`, then run `sys sync --apps`.
 
-**Add a configuration file:** create it under `configs/`, add an out-of-store link in `home.nix`, then run `sys sync --nix`. Changes to out-of-store linked files are live immediately, but Home Manager rollback cannot roll those edits back.
+**Add a configuration file:** create it under `configs/`, add an out-of-store link in `home.nix`, then run `sys sync --shell`. Changes to out-of-store linked files are live immediately, but Home Manager rollback cannot roll those edits back.
 
 **Try a tool ephemerally:**
 

@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pi = {
-      url = "github:earendil-works/pi/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     agents = {
       url = "github:madeleineostoja/agents";
       flake = false;
@@ -25,7 +21,6 @@
     {
       nixpkgs,
       home-manager,
-      pi,
       catppuccin,
       agents,
       ...
@@ -51,7 +46,7 @@
           catppuccin.homeModules.catppuccin
         ];
         extraSpecialArgs = {
-          inherit user agents pi;
+          inherit user agents;
         };
       };
     };
