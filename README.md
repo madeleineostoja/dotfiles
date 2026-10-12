@@ -19,7 +19,7 @@ cd ~/dotfiles
 ./scripts/bootstrap.sh
 ```
 
-`bootstrap.sh` requires macOS on Apple Silicon, user `mads`, `/Users/mads`, a completed CLT installation, and this repository at `~/dotfiles`. It installs Homebrew and Determinate Nix only when absent, applies the locked Home Manager configuration, reconciles Brew and MAS, installs mise tools, applies macOS defaults, enables the repository hook, and starts GitHub HTTPS authentication.
+`bootstrap.sh` requires macOS on Apple Silicon, user `mads`, `/Users/mads`, a completed CLT installation, and this repository at `~/dotfiles`. It installs Homebrew and Determinate Nix only when absent, applies the locked Home Manager configuration, reconciles Brew and MAS, installs mise tools, applies macOS defaults, and starts GitHub HTTPS authentication.
 
 Home Manager conflicts are saved with a timestamped `home-manager-backup-*` suffix; review those files before deleting them. Homebrew environment setup is managed in Home Manager's Zsh profile—bootstrap never modifies `~/.zprofile`.
 
@@ -145,18 +145,18 @@ Databases, queues, Redis-like services, and other stateful development services 
 
 ## Linting and recovery
 
-The repository hook calls the same checks available manually:
+Run validation explicitly:
 
 ```bash
 ./scripts/lint.sh
 ```
 
-It checks Nix formatting and evaluation, Bash syntax and ShellCheck, strict JSON, plist validity, and trailing whitespace. Bootstrap configures the repository-local `core.hooksPath` to `.githooks`.
+It checks Nix formatting and evaluation, Bash syntax and ShellCheck, strict JSON, plist validity, and trailing whitespace. Nix evaluation uses the local `flake.lock` and may fetch or build theme inputs on a cold cache, so these checks do not run automatically on commit.
 
 Useful verification and recovery commands:
 
 ```bash
-nix eval --no-write-lock-file .#homeConfigurations.mads.activationPackage.drvPath
+nix eval --no-write-lock-file "path:$PWD#homeConfigurations.mads.activationPackage.drvPath"
 brew bundle check --file=~/dotfiles/Brewfile
 mas list
 home-manager switch --rollback

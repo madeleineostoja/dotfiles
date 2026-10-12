@@ -49,9 +49,6 @@ read -r
 )
 "$REPO_DIR/scripts/defaults.sh"
 
-git -C "$REPO_DIR" config core.hooksPath .githooks
-chmod +x "$REPO_DIR/.githooks/pre-commit"
-
 if ! gh auth status --hostname github.com >/dev/null 2>&1; then
   gh auth login --hostname github.com --git-protocol https --web
 fi

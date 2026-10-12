@@ -5,13 +5,14 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_DIR"
 
 nix shell "nixpkgs#nixfmt" -c nixfmt --check flake.nix home.nix modules/*.nix
-nix flake check --no-build --no-write-lock-file
+# Catppuccin generates and reads the Starship theme during evaluation.
+nix flake check --no-write-lock-file "path:$REPO_DIR"
 
 shell_files=()
 while IFS= read -r file; do
   bash -n "$file"
   shell_files+=("$file")
-done < <(fd -H -t f -e sh scripts; printf '%s\n' bin/sys .githooks/pre-commit)
+done < <(fd -H -t f -e sh scripts; printf '%s\n' bin/sys)
 nix shell "nixpkgs#shellcheck" -c shellcheck "${shell_files[@]}"
 
 while IFS= read -r file; do
